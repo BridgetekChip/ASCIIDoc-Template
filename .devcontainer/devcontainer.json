@@ -1,0 +1,20 @@
+{
+    "name": "Asciidoctor Doc Environment",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "asciidoctor.asciidoctor-vscode"
+            ],
+            "settings": {
+                "asciidoc.preview.asciidoctorAttributes": {
+                    "allow-uri-read": "true",
+                    "requires": "asciidoctor-diagram"
+                }
+            }
+        }
+    },
+    "remoteUser": "root"
+}

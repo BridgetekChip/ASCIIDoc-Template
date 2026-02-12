@@ -1,0 +1,89 @@
+
+== CTRL Register (32-bit)
+
+*Base Address:* `0x4002_0000` +
+*Offset:* `0x00` +
+*Access:* R/W +
+*Reset:* `0x0000_0000`
+
+=== Bitfield Diagram
+
+.Bits 31..16
+[cols="^1*16", options="header"]
+|===
+|31 |30 |29 |28 |27 |26 |25 |24 |23 |22 |21 |20 |19 |18 |17 |16
+8+^| RESERVED (31:24)
+8+^| SPEED (23:16)
+|===
+
+.Bits 15..0
+[cols="^1*16", options="header"]
+|===
+|15 |14 |13 |12 |11 |10 |9 |8 |7 |6 |5 |4 |3 |2 |1 |0
+4+^| PULL (15:12)
+4+^| MODE (11:8)
+1+^| EN (7)
+1+^| INTEN (6)
+6+^| KEY (5:0)
+|===
+
+=== Field Description
+
+[cols="1,1,1,4", options="header"]
+|===
+| Bits | Field | Reset | Description
+| 31:24 | RESERVED | 0x00 | Reserved. Keep at reset value.
+| 23:16 | SPEED | 0x00 | Output speed. `0=Low`, `1=Med`, `2=High`, `3=VeryHigh`
+| 15:12 | PULL | 0x0 | Pull config. `0=None`, `1=Up`, `2=Down`
+| 11:8 | MODE | 0x0 | Mode. `0=Input`, `1=Output`, `2=AF`, `3=Analog`
+| 7 | EN | 0 | Enable. `0=Disable`, `1=Enable`
+| 6 | INTEN | 0 | Interrupt enable. `0=Off`, `1=On`
+| 5:0 | KEY | 0x00 | Write key. Must write `0x2A` to update MODE/PULL/SPEED.
+|===
+
+=== C Example (Read-Modify-Write)
+
+[source,c]
+----
+#include <stdint.h>
+
+#define REG32(addr) (*(volatile uint32_t *)(addr))
+
+#define CTRL_BASE   0x40020000UL
+#define CTRL_OFF    0x00UL
+#define CTRL        REG32(CTRL_BASE + CTRL_OFF)
+
+#define CTRL_SPEED_Pos   16u
+#define CTRL_SPEED_Msk   (0xFFu << CTRL_SPEED_Pos)
+
+#define CTRL_PULL_Pos    12u
+#define CTRL_PULL_Msk    (0xFu  << CTRL_PULL_Pos)
+
+#define CTRL_MODE_Pos    8u
+#define CTRL_MODE_Msk    (0xFu  << CTRL_MODE_Pos)
+
+#define CTRL_EN_Pos      7u
+#define CTRL_EN_Msk      (1u    << CTRL_EN_Pos)
+
+#define CTRL_INTEN_Pos   6u
+#define CTRL_INTEN_Msk   (1u    << CTRL_INTEN_Pos)
+
+#define CTRL_KEY_Pos     0u
+#define CTRL_KEY_Msk     (0x3Fu << CTRL_KEY_Pos)
+#define CTRL_KEY_VALUE   0x2Au
+
+static inline void ctrl_config(uint32_t mode, uint32_t pull, uint32_t speed, uint32_t en)
+{
+    uint32_t reg = CTRL;
+
+    // Preserve reserved bits; only modify documented fields.
+    reg &= ~(CTRL_MODE_Msk | CTRL_PULL_Msk | CTRL_SPEED_Msk | CTRL_EN_Msk | CTRL_KEY_Msk);
+    reg |= ((mode  & 0xFu)  << CTRL_MODE_Pos);
+    reg |= ((pull  & 0xFu)  << CTRL_PULL_Pos);
+    reg |= ((speed & 0xFFu) << CTRL_SPEED_Pos);
+    reg |= ((en ? 1u : 0u)  << CTRL_EN_Pos);
+    reg |= (CTRL_KEY_VALUE  << CTRL_KEY_Pos);
+
+    CTRL = reg;
+}
+----
