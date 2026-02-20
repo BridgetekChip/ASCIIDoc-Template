@@ -1,0 +1,43 @@
+extends: default
+
+# Asciidoctor PDF theme for CJK.
+#
+# NOTE: Font filenames can vary by distro.
+# If build fails, run `fc-list | grep -i "noto.*cjk"` and update below.
+font:
+  catalog:
+    NotoSansCJK:
+      normal: /usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc
+      bold: /usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc
+      italic: /usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc
+      bold_italic: /usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc
+    NotoSerifCJK:
+      normal: /usr/share/fonts/opentype/noto/NotoSerifCJK-Regular.ttc
+      bold: /usr/share/fonts/opentype/noto/NotoSerifCJK-Bold.ttc
+      italic: /usr/share/fonts/opentype/noto/NotoSerifCJK-Regular.ttc
+      bold_italic: /usr/share/fonts/opentype/noto/NotoSerifCJK-Bold.ttc
+    "M+ 1mn":
+      normal: /usr/share/fonts/truetype/mplus/mplus-1mn-regular.ttf
+      bold: /usr/share/fonts/truetype/mplus/mplus-1mn-bold.ttf
+      italic: /usr/share/fonts/truetype/mplus/mplus-1mn-regular.ttf
+      bold_italic: /usr/share/fonts/truetype/mplus/mplus-1mn-bold.ttf
+  fallbacks:
+    - NotoSansCJK
+
+base:
+  font-family: "M+ 1mn"
+  font-size: 10
+  line-height-length: 14
+
+heading:
+  font-family: NotoSerifCJK
+  font-style: bold
+
+code:
+  font-family: NotoSansCJK
+  font-size: 9
+
+# Better spacing for Chinese paragraphs
+prose:
+  margin-inner: 0
+

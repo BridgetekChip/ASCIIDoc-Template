@@ -1,0 +1,28 @@
+extends: default
+
+header:
+  height: 0.7in
+  image-vertical-align: 2
+  columns: <25% =50% >25%
+  recto:
+    left:
+      content: 'image:{docimagesdir}/Bridgetek_logo.svg[pdfwidth=70pt]'
+    center:
+      content: '*{document-title}*'
+    right:
+      content: '{revnumber}'
+  verso:
+    left:
+      content: 'image:{docimagesdir}/Bridgetek_logo.svg[pdfwidth=70pt]'
+    center:
+      content: '*{chapter-title}*'
+    right:
+      content: '{page-number} / {page-count}'
+
+footer:
+  recto:
+    right:
+      content: '{page-number}'
+  verso:
+    left:
+      content: '{page-number}'

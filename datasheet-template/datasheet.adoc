@@ -1,0 +1,233 @@
+= FT9xx Series 32-Bit Programming Guide
+:author: Software Engineering Team
+:email: paul.jiao@brtchip.comf
+:revnumber: v0.1
+:revdate: 2026-02-11
+:toc: 
+:toclevels: 3
+:sectnums:
+:sectnumlevels: 3
+:source-highlighter: highlight.js
+:imagesdir: ./images
+:icons: font
+:figure-caption: 图
+:table-caption: 表
+:icons: font
+:source-highlighter: rouge
+:stem: mathjax
+:docinfo: shared
+:wavedrom:
+
+
+
+== 概述 (Introduction)
+本文档旨在为嵌入式软件工程师提供系列 MCU 的底层驱动开发指南。
+
+[IMPORTANT]
+====
+在操作高压外设前，请确保 VDD 处于 3.3V 稳定状态。
+====
+
+include::chapters/conventions.adoc[leveloffset=+1]
+
+== 寄存器映射 (Register Maps)
+// 使用表格功能，AsciiDoc 的表格处理能力远超 Markdown
+[cols="2,1,1,4", options="header"]
+|===
+| Register Name | Offset | Access | Description
+| GPIO_MODE    | 0x00   | R/W    | 配置 GPIO 引脚模式
+| GPIO_ODATA   | 0x04   | R/W    | 输出数据寄存器
+| GPIO_IDATA   | 0x08   | R      | 输入数据寄存器
+|===
+
+==  外设编程实例 (Peripheral Programming)
+
+=== UART 初始化
+以下是基于 *C 语言* 的初始化代码示例：
+
+[source,c]
+----
+#include "mcu_uart.h"
+
+void uart_init(uint32_t baudrate) {
+    UART->BAUD = SystemCoreClock / baudrate; // 设置波特率
+    UART->CTRL |= UART_ENABLE;               // 使能串口
+}
+----
+
+== 内容复用 (Modular Content)
+// 嵌入式文档通常很长，你可以将每一章写在独立文件里，然后在这里包含进来
+// include::chapters/timer_module.adoc[leveloffset=+1]
+
+include::regs/_ctrl_reg.adoc[leveloffset=+1]
+
+
+
+== 公式与计算
+对于 PWM 频率的计算，公式如下：
+
+[latexmath]
+++++
+f_{PWM} = \frac{f_{clk}}{(Prescaler + 1) \times (Period + 1)}
+++++
+
+use ASCII math, 公式如下: 
+
+:stem: asciimath
+
+[asciimath]
+++++
+f_(PWM) = f_(clk) / ((Prescaler + 1) * (Period + 1))
+++++
+
+
+== 寄存器描述 32-bit Register Example
+
+
+=== GPIO_MODE Register (0x00)
+
+==== Register Layout (32-bit)
+
+[cols="1,4,1,6", options="header"]
+|===
+| Bits | Field | Reset | Description
+| 31:16 | RESERVED | 0x0000 | Reserved, must keep default value.
+| 15:8  | SPEED    | 0x00   | Output speed selection.
+| 7:4   | PULL     | 0x0    | Pull-up / pull-down configuration.
+| 3:0   | MODE     | 0x0    | Pin mode selection.
+|===
+
+==== Field Definitions
+
+* *MODE* (Bits [3:0])
+** `0x0` = Input
+** `0x1` = Output
+** `0x2` = Alternate Function
+** `0x3` = Analog
+
+* *PULL* (Bits [7:4])
+** `0x0` = No pull
+** `0x1` = Pull-up
+** `0x2` = Pull-down
+
+* *SPEED* (Bits [15:8])
+** `0x00` = Low
+** `0x01` = Medium
+** `0x02` = High
+** `0x03` = Very High
+
+==== C Access Example
+
+[source,c]
+----
+#include <stdint.h>
+
+#define GPIO_BASE      (0x40020000UL)
+#define GPIO_MODE_OFF  (0x00UL)
+#define GPIO_MODE      (*(volatile uint32_t *)(GPIO_BASE + GPIO_MODE_OFF))
+
+// Bit positions / masks
+#define GPIO_MODE_MODE_Pos   0
+#define GPIO_MODE_MODE_Msk   (0xFUL << GPIO_MODE_MODE_Pos)
+
+#define GPIO_MODE_PULL_Pos   4
+#define GPIO_MODE_PULL_Msk   (0xFUL << GPIO_MODE_PULL_Pos)
+
+#define GPIO_MODE_SPEED_Pos  8
+#define GPIO_MODE_SPEED_Msk  (0xFFUL << GPIO_MODE_SPEED_Pos)
+
+static inline void gpio_mode_set(uint32_t mode, uint32_t pull, uint32_t speed)
+{
+    uint32_t reg = GPIO_MODE;
+
+    reg &= ~(GPIO_MODE_MODE_Msk | GPIO_MODE_PULL_Msk | GPIO_MODE_SPEED_Msk);
+    reg |= ((mode  & 0xFUL)  << GPIO_MODE_MODE_Pos);
+    reg |= ((pull  & 0xFUL)  << GPIO_MODE_PULL_Pos);
+    reg |= ((speed & 0xFFUL) << GPIO_MODE_SPEED_Pos);
+
+    GPIO_MODE = reg;
+}
+
+static inline uint32_t gpio_mode_get(void)
+{
+    return GPIO_MODE;
+}
+
+----
+
+
+
+
+
+[discrete]
+== Notes
+
+* This register is 32-bit aligned, so offsets increment by 4 bytes (0x00, 0x04, 0x08...).
+* Always preserve *RESERVED* bits (read-modify-write) unless the spec says otherwise.
+
+
+== 波形设计 (Timing Diagrams)
+
+以下是 SPI 数据传输的典型时序要求：
+
+[wavedrom,format=svg]
+----
+{ "signal": [
+  { "name": "SCK",  "wave": "p......" },
+  { "name": "MOSI", "wave": "x.3456..", "data": ["A2", "A6", "A5", "A4"] },
+  { "name": "MISO", "wave": "x......",  "data": ["D7"] },
+  { "name": "CSN",  "wave": "1.0...1." }
+]}
+----
+
+== 架构框图 architect diagrams
+
+This diagram is drawn by plantuml code. 
+
+[plantuml, arch_diagram, svg]
+----
+@startuml
+skinparam componentStyle rectangle
+
+package "MCU Core" {
+  [Cortex-M Processor] as CPU
+}
+
+package "SPI Peripheral" {
+  [Register Interface] as REG
+  [FIFO Buffer] as FIFO
+  [State Machine] as FSM
+  [Baud Rate Gen] as BRG
+}
+
+node "External Flash" as Flash
+
+CPU <-> REG : APB Bus
+REG <-> FIFO
+FIFO <-> FSM
+BRG -> FSM
+FSM <-> Flash : SPI Bus
+@enduml
+----
+
+It can be done by inserting the image :
+
+[.figcap-center]
+:figure-caption: Figure 图
+.System Diagram (系统架构框图) 
+
+
+[align="center"]
+image::BT820architecture.png[width=600]
+
+
+[discrete]
+== 修订记录 (Revision History)
+// 这个标题会很大，但不会被编号为 "1."
+
+[cols="1,1,2,6", options="header"]
+|===
+| 日期 | 版本 | 作者 | 变更说明
+| 2026-02-12 | v0.1 | Paul Jiao | 初稿：新增寄存器章节与位域图示
+| 2026-02-15 | v0.2 | KH Low | 修正章节编号与 TOC 显示
+|===

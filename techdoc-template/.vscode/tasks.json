@@ -1,0 +1,17 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Docs: Build HTML",
+      "type": "shell",
+      "command": "./scripts/build.sh",
+      "problemMatcher": []
+    },
+    {
+      "label": "Docs: Build PDF",
+      "type": "shell",
+      "command": "./scripts/build_pdf.sh",
+      "problemMatcher": []
+    }
+  ]
+}

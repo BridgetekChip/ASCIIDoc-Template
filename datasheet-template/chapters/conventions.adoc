@@ -1,0 +1,55 @@
+== 写作规范 (Conventions)
+
+=== 数学公式（请勿使用 LaTeX）
+
+为保证文档可在 HTML/PDF/Markdown 等多种格式之间更容易转换，并减少对 LaTeX/TeXLive 工具链的依赖：
+
+* *不要使用* `latexmath` 或 LaTeX 语法块：
++
+[source,adoc]
+----
+[latexmath]
+++++
+f_{PWM} = \frac{f_{clk}}{(Prescaler + 1) \times (Period + 1)}
+++++
+----
+
+* *请使用* AsciiMath（推荐）或等价的纯文本表达。
++
+推荐写法（AsciiMath）：
++
+[source,adoc]
+----
+:stem: asciimath
+
+[asciimath]
+++++
+f_(PWM) = f_(clk) / ((Prescaler + 1) * (Period + 1))
+++++
+----
+
+* 行内公式用：
++
+[source,adoc]
+----
+stem:[f_(PWM) = f_(clk) / ((Prescaler + 1) * (Period + 1))]
+----
+
+* 如果公式较复杂，优先考虑：
+** 用变量定义 + 文字说明拆解（可读性更强）
+** 或使用由工具生成的 SVG/PNG 公式图，保持跨格式一致性
+
+=== 电路原理图（Schematic）请使用 SVG
+
+为保证原理图在 HTML/PDF 中清晰缩放、打印不糊、并便于版本管理：
+
+* 电路原理图/框图/连线图优先使用 *SVG*（矢量图）。
+* 避免使用低分辨率 PNG/JPG 截图作为原理图（放大后会模糊、文字难读）。
+* 文件命名建议：`schematic_top.svg`, `schematic_power.svg`, `schematic_io.svg`
+* 引用方式示例：
++
+[source,adoc]
+----
+.电源模块原理图 (Power Schematic)
+image::schematic_power.svg[width=95%,align=center]
+----

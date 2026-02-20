@@ -1,0 +1,11 @@
+/* Minimal CSS for AsciiDoc Preview
+   Goal: center figure image + figure title (caption) ONLY,
+   without overriding other default styles.
+*/
+
+@import url("asciidoctor.css");
+
+/* Only center figure caption/title for blocks you tagged */
+.imageblock.figcap-center > .title {
+  text-align: center;
+}

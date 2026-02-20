@@ -1,0 +1,21 @@
+{
+  "name": "Asciidoc (Chinese + PDF)",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "asciidoctor.asciidoctor-vscode",
+        "ms-azuretools.vscode-docker"
+      ],
+      "settings": {
+        "asciidoc.preview.useEditorStyle": false,
+        "asciidoc.preview.scrollPreviewWithEditor": true,
+        "asciidoc.preview.scrollEditorWithPreview": true
+      }
+    }
+  },
+  "postCreateCommand": "chmod +x scripts/*.sh || true",
+  "remoteUser": "vscode"
+}

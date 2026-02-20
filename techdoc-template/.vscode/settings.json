@@ -1,0 +1,12 @@
+{
+  "files.associations": {
+    "*.adoc": "asciidoc",
+    "*.adoc.txt": "asciidoc"
+  },
+
+  "asciidoc.attributes": {
+    "source-highlighter": "highlightjs",
+    "highlightjsdir": "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/",
+    "highlightjs-theme": "atom-one-dark"
+  }
+}

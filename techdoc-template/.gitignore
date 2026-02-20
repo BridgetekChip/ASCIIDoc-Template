@@ -1,0 +1,9 @@
+# Build outputs
+build/*
+!build/.gitkeep
+
+# Diagram cache (asciidoctor-diagram)
+.diagrams/
+
+# OS/editor
+.DS_Store
