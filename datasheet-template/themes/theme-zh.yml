@@ -1,31 +1,43 @@
 extends: default
+
+# Asciidoctor PDF theme for CJK.
+#
+# NOTE: Font filenames can vary by distro.
+# If build fails, run `fc-list | grep -i "noto.*cjk"` and update below.
 font:
   catalog:
-    # 定义中文字体
-    NotoSansSC:
-      normal: NotoSansSC-Regular.ttf
-      bold: NotoSansSC-Bold.ttf
-      italic: NotoSansSC-Regular.ttf
-      bold_italic: NotoSansSC-Bold.ttf
-    # 定义你上传的 Roboto 字体
-    Roboto:
-      normal: Roboto-Regular.ttf
-      bold: Roboto-Regular.ttf # 如果没有 Bold 文件，暂用 Regular 替代
+    NotoSansCJK:
+      normal: /usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc
+      bold: /usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc
+      italic: /usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc
+      bold_italic: /usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc
+    NotoSerifCJK:
+      normal: /usr/share/fonts/opentype/noto/NotoSerifCJK-Regular.ttc
+      bold: /usr/share/fonts/opentype/noto/NotoSerifCJK-Bold.ttc
+      italic: /usr/share/fonts/opentype/noto/NotoSerifCJK-Regular.ttc
+      bold_italic: /usr/share/fonts/opentype/noto/NotoSerifCJK-Bold.ttc
+    "M+ 1mn":
+      normal: /usr/share/fonts/truetype/mplus/mplus-1mn-regular.ttf
+      bold: /usr/share/fonts/truetype/mplus/mplus-1mn-bold.ttf
+      italic: /usr/share/fonts/truetype/mplus/mplus-1mn-regular.ttf
+      bold_italic: /usr/share/fonts/truetype/mplus/mplus-1mn-bold.ttf
   fallbacks:
-    - NotoSansSC
-page:
-  layout: portrait
+    - NotoSansCJK
+
 base:
-  # 正文优先使用 Roboto，遇到中文自动回退到 NotoSansSC
-  font_family: Roboto
-  font_size: 10.5
-  line_height_length: 15
+  font-family: "M+ 1mn"
+  font-size: 10
+  line-height-length: 14
+
 heading:
-  # 标题使用思源黑体加粗
-  font_family: NotoSansSC
-  font_style: bold
-  font_color: #1a1a1a
+  font-family: NotoSerifCJK
+  font-style: bold
+
 code:
-  # 代码块配置
-  font_family: Roboto
-  font_size: 9
+  font-family: NotoSansCJK
+  font-size: 9
+
+# Better spacing for Chinese paragraphs
+prose:
+  margin-inner: 0
+
