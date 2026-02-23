@@ -1,0 +1,250 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" width="900" height="620" font-family="monospace" font-size="11">
+
+  <!-- Background -->
+  <rect width="900" height="620" fill="#f8f9fa" stroke="#ccc" stroke-width="1"/>
+  
+  <!-- Title -->
+  <text x="450" y="28" text-anchor="middle" font-size="15" font-weight="bold" fill="#222">Electronic Circuit Schematic</text>
+  <line x1="40" y1="35" x2="860" y2="35" stroke="#999" stroke-width="0.8"/>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- POWER SUPPLY (top-left) -->
+  <!-- ═══════════════════════════════════════════ -->
+  <text x="60" y="65" font-size="12" font-weight="bold" fill="#555">POWER SUPPLY</text>
+
+  <!-- VCC symbol -->
+  <line x1="100" y1="75" x2="100" y2="100" stroke="#c00" stroke-width="2"/>
+  <polygon points="85,75 115,75 100,55" fill="#c00"/>
+  <text x="120" y="72" fill="#c00" font-weight="bold" font-size="12">VCC (+5V)</text>
+
+  <!-- Battery cell lines -->
+  <line x1="70" y1="115" x2="130" y2="115" stroke="#333" stroke-width="3"/>
+  <line x1="80" y1="125" x2="120" y2="125" stroke="#333" stroke-width="1.5"/>
+  <line x1="70" y1="135" x2="130" y2="135" stroke="#333" stroke-width="3"/>
+  <line x1="80" y1="145" x2="120" y2="145" stroke="#333" stroke-width="1.5"/>
+  <line x1="100" y1="100" x2="100" y2="115" stroke="#c00" stroke-width="2"/>
+  <line x1="100" y1="145" x2="100" y2="170" stroke="#333" stroke-width="2"/>
+
+  <!-- GND -->
+  <line x1="70" y1="170" x2="130" y2="170" stroke="#333" stroke-width="2"/>
+  <line x1="80" y1="177" x2="120" y2="177" stroke="#333" stroke-width="2"/>
+  <line x1="90" y1="184" x2="110" y2="184" stroke="#333" stroke-width="2"/>
+  <line x1="98" y1="191" x2="102" y2="191" stroke="#333" stroke-width="2"/>
+  <text x="135" y="180" fill="#555" font-size="11">GND</text>
+
+  <!-- Power rail line going right -->
+  <line x1="100" y1="100" x2="500" y2="100" stroke="#c00" stroke-width="2" stroke-dasharray="6,3"/>
+  <text x="280" y="95" fill="#c00" font-size="10">VCC Rail</text>
+
+  <!-- GND rail -->
+  <line x1="100" y1="170" x2="800" y2="170" stroke="#333" stroke-width="2" stroke-dasharray="6,3"/>
+  <text x="280" y="185" fill="#555" font-size="10">GND Rail</text>
+
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- RESISTOR R1 -->
+  <!-- ═══════════════════════════════════════════ -->
+  <text x="185" y="235" text-anchor="middle" fill="#333" font-size="10">R1</text>
+  <text x="185" y="247" text-anchor="middle" fill="#666" font-size="9">10kΩ</text>
+  <!-- wire in -->
+  <line x1="185" y1="100" x2="185" y2="255" stroke="#333" stroke-width="1.5"/>
+  <!-- resistor body -->
+  <rect x="170" y="255" width="30" height="70" rx="4" fill="#fff" stroke="#333" stroke-width="2"/>
+  <line x1="176" y1="265" x2="194" y2="265" stroke="#e80" stroke-width="1.5"/>
+  <line x1="176" y1="275" x2="194" y2="275" stroke="#e80" stroke-width="1.5"/>
+  <line x1="176" y1="285" x2="194" y2="285" stroke="#777" stroke-width="1.5"/>
+  <line x1="176" y1="295" x2="194" y2="295" stroke="#e80" stroke-width="1.5"/>
+  <line x1="176" y1="305" x2="194" y2="305" stroke="#e80" stroke-width="1.5"/>
+  <!-- wire out -->
+  <line x1="185" y1="325" x2="185" y2="360" stroke="#333" stroke-width="1.5"/>
+
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- NPN TRANSISTOR Q1 -->
+  <!-- ═══════════════════════════════════════════ -->
+  <text x="270" y="235" text-anchor="middle" fill="#333" font-size="10">Q1 (NPN)</text>
+
+  <!-- Transistor circle -->
+  <circle cx="290" cy="360" r="35" fill="#fff" stroke="#333" stroke-width="2"/>
+
+  <!-- Base line -->
+  <line x1="185" y1="360" x2="265" y2="360" stroke="#333" stroke-width="1.5"/>
+  <line x1="265" y1="340" x2="265" y2="380" stroke="#333" stroke-width="2.5"/>
+
+  <!-- Collector -->
+  <line x1="265" y1="343" x2="300" y2="325" stroke="#333" stroke-width="1.5"/>
+  <line x1="300" y1="325" x2="300" y2="290" stroke="#333" stroke-width="1.5"/>
+
+  <!-- Emitter with arrow -->
+  <line x1="265" y1="377" x2="300" y2="395" stroke="#333" stroke-width="1.5"/>
+  <polygon points="296,390 308,399 300,402" fill="#333"/>
+  <line x1="300" y1="399" x2="300" y2="430" stroke="#333" stroke-width="1.5"/>
+
+  <!-- Connect collector to VCC via R2 -->
+  <text x="320" y="270" fill="#333" font-size="10">R2</text>
+  <text x="320" y="282" fill="#666" font-size="9">4.7kΩ</text>
+  <rect x="305" y="255" width="20" height="50" rx="3" fill="#fff" stroke="#333" stroke-width="2"/>
+  <line x1="315" y1="265" x2="315" y2="300" stroke="#e80" stroke-width="3"/>
+  <line x1="300" y1="255" x2="300" y2="255" stroke="#333" stroke-width="1.5"/>
+  <line x1="315" y1="255" x2="315" y2="255" stroke="#333" stroke-width="1.5"/>
+  <line x1="300" y1="290" x2="315" y2="305" stroke="#333" stroke-width="1.5"/>
+  <line x1="315" y1="200" x2="315" y2="255" stroke="#c00" stroke-width="1.5"/>
+  <line x1="315" y1="100" x2="315" y2="200" stroke="#c00" stroke-width="1.5"/>
+
+  <!-- Emitter to GND -->
+  <line x1="300" y1="430" x2="300" y2="450" stroke="#333" stroke-width="1.5"/>
+  <line x1="280" y1="450" x2="320" y2="450" stroke="#333" stroke-width="2"/>
+  <line x1="287" y1="457" x2="313" y2="457" stroke="#333" stroke-width="2"/>
+  <line x1="294" y1="464" x2="306" y2="464" stroke="#333" stroke-width="2"/>
+
+  <!-- Base label -->
+  <text x="165" y="358" fill="#555" font-size="9">B</text>
+  <text x="295" y="288" fill="#555" font-size="9">C</text>
+  <text x="308" y="410" fill="#555" font-size="9">E</text>
+
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- OUTPUT from collector to Logic -->
+  <!-- ═══════════════════════════════════════════ -->
+  <line x1="315" y1="305" x2="430" y2="305" stroke="#333" stroke-width="1.5"/>
+  <text x="370" y="298" fill="#555" font-size="9">Signal Out</text>
+
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- LOGIC GATES SECTION -->
+  <!-- ═══════════════════════════════════════════ -->
+  <text x="490" y="65" font-size="12" font-weight="bold" fill="#555">LOGIC GATES (74HC Series)</text>
+  <rect x="420" y="70" width="420" height="500" rx="6" fill="#f0f4ff" stroke="#99b" stroke-width="1" stroke-dasharray="4,2"/>
+
+  <!-- AND Gate -->
+  <text x="500" y="245" text-anchor="middle" fill="#333" font-size="10" font-weight="bold">AND Gate</text>
+  <!-- Input wires -->
+  <line x1="430" y1="270" x2="460" y2="270" stroke="#333" stroke-width="1.5"/>
+  <line x1="430" y1="290" x2="460" y2="290" stroke="#333" stroke-width="1.5"/>
+  <!-- Gate body -->
+  <path d="M460,255 L460,305 L480,305 Q510,305 510,280 Q510,255 480,255 Z" fill="#fff" stroke="#333" stroke-width="2"/>
+  <!-- Output -->
+  <line x1="510" y1="280" x2="545" y2="280" stroke="#333" stroke-width="1.5"/>
+  <text x="435" y="268" fill="#555" font-size="9">A</text>
+  <text x="435" y="290" fill="#555" font-size="9">B</text>
+  <text x="548" y="283" fill="#555" font-size="9">Q</text>
+  <text x="478" y="284" fill="#333" font-size="9" font-weight="bold">&amp;</text>
+
+  <!-- OR Gate -->
+  <text x="500" y="340" text-anchor="middle" fill="#333" font-size="10" font-weight="bold">OR Gate</text>
+  <line x1="430" y1="355" x2="462" y2="355" stroke="#333" stroke-width="1.5"/>
+  <line x1="430" y1="375" x2="462" y2="375" stroke="#333" stroke-width="1.5"/>
+  <path d="M460,340 Q470,365 460,390 L490,390 Q515,390 520,365 Q515,340 490,340 Z" fill="#fff" stroke="#333" stroke-width="2"/>
+  <line x1="520" y1="365" x2="545" y2="365" stroke="#333" stroke-width="1.5"/>
+  <text x="435" y="353" fill="#555" font-size="9">A</text>
+  <text x="435" y="375" fill="#555" font-size="9">B</text>
+  <text x="548" y="368" fill="#555" font-size="9">Q</text>
+  <text x="483" y="369" fill="#333" font-size="9" font-weight="bold">≥1</text>
+
+  <!-- NOT Gate (Inverter) -->
+  <text x="500" y="430" text-anchor="middle" fill="#333" font-size="10" font-weight="bold">NOT (Inverter)</text>
+  <line x1="430" y1="455" x2="460" y2="455" stroke="#333" stroke-width="1.5"/>
+  <polygon points="460,440 460,470 495,455" fill="#fff" stroke="#333" stroke-width="2"/>
+  <circle cx="499" cy="455" r="4" fill="#fff" stroke="#333" stroke-width="2"/>
+  <line x1="503" y1="455" x2="545" y2="455" stroke="#333" stroke-width="1.5"/>
+  <text x="435" y="458" fill="#555" font-size="9">A</text>
+  <text x="548" y="458" fill="#555" font-size="9">Q̄</text>
+  <text x="473" y="458" fill="#333" font-size="8">1</text>
+
+  <!-- XOR Gate -->
+  <text x="500" y="510" text-anchor="middle" fill="#333" font-size="10" font-weight="bold">XOR Gate</text>
+  <line x1="430" y1="525" x2="465" y2="525" stroke="#333" stroke-width="1.5"/>
+  <line x1="430" y1="545" x2="465" y2="545" stroke="#333" stroke-width="1.5"/>
+  <path d="M458,510 Q468,535 458,560 L488,560 Q513,560 518,535 Q513,510 488,510 Z" fill="#fff" stroke="#333" stroke-width="2"/>
+  <path d="M454,510 Q464,535 454,560" fill="none" stroke="#333" stroke-width="2"/>
+  <line x1="518" y1="535" x2="545" y2="535" stroke="#333" stroke-width="1.5"/>
+  <text x="435" y="523" fill="#555" font-size="9">A</text>
+  <text x="435" y="545" fill="#555" font-size="9">B</text>
+  <text x="548" y="538" fill="#555" font-size="9">Q</text>
+  <text x="483" y="539" fill="#333" font-size="9" font-weight="bold">=1</text>
+
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- IC CHIP (74HC00) -->
+  <!-- ═══════════════════════════════════════════ -->
+  <text x="700" y="235" text-anchor="middle" fill="#333" font-size="10" font-weight="bold">IC: 74HC00 (Quad NAND)</text>
+  <!-- IC body -->
+  <rect x="630" y="245" width="140" height="200" rx="6" fill="#222" stroke="#555" stroke-width="2"/>
+  <!-- Notch -->
+  <path d="M690,245 Q700,235 710,245" fill="#444" stroke="#555" stroke-width="1.5"/>
+  <!-- IC label -->
+  <text x="700" y="275" text-anchor="middle" fill="#0f0" font-size="11" font-weight="bold">74HC00</text>
+  <text x="700" y="292" text-anchor="middle" fill="#0a0" font-size="9">QUAD 2-INPUT NAND</text>
+
+  <!-- Left pins -->
+  <line x1="610" y1="310" x2="630" y2="310" stroke="#aaa" stroke-width="1.5"/>
+  <line x1="610" y1="325" x2="630" y2="325" stroke="#aaa" stroke-width="1.5"/>
+  <line x1="610" y1="340" x2="630" y2="340" stroke="#aaa" stroke-width="1.5"/>
+  <line x1="610" y1="355" x2="630" y2="355" stroke="#aaa" stroke-width="1.5"/>
+  <line x1="610" y1="370" x2="630" y2="370" stroke="#aaa" stroke-width="1.5"/>
+  <line x1="610" y1="385" x2="630" y2="385" stroke="#aaa" stroke-width="1.5"/>
+  <line x1="610" y1="400" x2="630" y2="400" stroke="#aaa" stroke-width="1.5"/>
+  <text x="605" y="313" text-anchor="end" fill="#aaa" font-size="8">1A</text>
+  <text x="605" y="328" text-anchor="end" fill="#aaa" font-size="8">1B</text>
+  <text x="605" y="343" text-anchor="end" fill="#ccc" font-size="8">1Y</text>
+  <text x="605" y="358" text-anchor="end" fill="#aaa" font-size="8">2A</text>
+  <text x="605" y="373" text-anchor="end" fill="#aaa" font-size="8">2B</text>
+  <text x="605" y="388" text-anchor="end" fill="#ccc" font-size="8">2Y</text>
+  <text x="605" y="403" text-anchor="end" fill="#c00" font-size="8">GND</text>
+
+  <!-- Right pins -->
+  <line x1="770" y1="310" x2="790" y2="310" stroke="#aaa" stroke-width="1.5"/>
+  <line x1="770" y1="325" x2="790" y2="325" stroke="#aaa" stroke-width="1.5"/>
+  <line x1="770" y1="340" x2="790" y2="340" stroke="#aaa" stroke-width="1.5"/>
+  <line x1="770" y1="355" x2="790" y2="355" stroke="#aaa" stroke-width="1.5"/>
+  <line x1="770" y1="370" x2="790" y2="370" stroke="#aaa" stroke-width="1.5"/>
+  <line x1="770" y1="385" x2="790" y2="385" stroke="#aaa" stroke-width="1.5"/>
+  <line x1="770" y1="400" x2="790" y2="400" stroke="#aaa" stroke-width="1.5"/>
+  <text x="795" y="313" fill="#ccc" font-size="8">4Y</text>
+  <text x="795" y="328" fill="#aaa" font-size="8">4B</text>
+  <text x="795" y="343" fill="#aaa" font-size="8">4A</text>
+  <text x="795" y="358" fill="#ccc" font-size="8">3Y</text>
+  <text x="795" y="373" fill="#aaa" font-size="8">3B</text>
+  <text x="795" y="388" fill="#aaa" font-size="8">3A</text>
+  <text x="795" y="403" fill="#e00" font-size="8">VCC</text>
+
+  <!-- VCC to IC -->
+  <line x1="790" y1="400" x2="810" y2="400" stroke="#c00" stroke-width="1.5"/>
+  <line x1="810" y1="100" x2="810" y2="400" stroke="#c00" stroke-width="1.5"/>
+
+  <!-- GND to IC -->
+  <line x1="610" y1="400" x2="590" y2="400" stroke="#333" stroke-width="1.5"/>
+  <line x1="590" y1="170" x2="590" y2="400" stroke="#333" stroke-width="1.5"/>
+
+  <!-- IC decoupling cap -->
+  <text x="835" y="295" fill="#333" font-size="9">C1</text>
+  <text x="832" y="307" fill="#666" font-size="8">100nF</text>
+  <line x1="820" y1="315" x2="850" y2="315" stroke="#333" stroke-width="2"/>
+  <line x1="820" y1="322" x2="850" y2="322" stroke="#333" stroke-width="2"/>
+  <line x1="835" y1="300" x2="835" y2="315" stroke="#c00" stroke-width="1.5"/>
+  <line x1="835" y1="322" x2="835" y2="340" stroke="#333" stroke-width="1.5"/>
+  <text x="855" y="318" fill="#555" font-size="8">Bypass</text>
+  <text x="855" y="328" fill="#555" font-size="8">Cap</text>
+  <line x1="835" y1="340" x2="835" y2="400" stroke="#333" stroke-width="1.5"/>
+  <line x1="810" y1="400" x2="835" y2="400" stroke="#333" stroke-width="1.5"/>
+
+  <!-- Connect transistor output to gate input -->
+  <line x1="545" y1="280" x2="610" y2="280" stroke="#333" stroke-width="1.5"/>
+  <line x1="610" y1="280" x2="610" y2="310" stroke="#333" stroke-width="1.5"/>
+  <text x="570" y="273" fill="#555" font-size="8">→ Gate In</text>
+
+  <!-- Legend -->
+  <rect x="40" y="480" width="330" height="100" rx="5" fill="#fff" stroke="#ccc" stroke-width="1"/>
+  <text x="55" y="498" font-size="11" font-weight="bold" fill="#444">Legend</text>
+  <line x1="55" y1="510" x2="85" y2="510" stroke="#c00" stroke-width="2" stroke-dasharray="5,2"/>
+  <text x="92" y="514" fill="#444" font-size="10">VCC Power Rail (+5V)</text>
+  <line x1="55" y1="525" x2="85" y2="525" stroke="#333" stroke-width="2" stroke-dasharray="5,2"/>
+  <text x="92" y="529" fill="#444" font-size="10">GND Rail</text>
+  <line x1="55" y1="540" x2="85" y2="540" stroke="#333" stroke-width="1.5"/>
+  <text x="92" y="544" fill="#444" font-size="10">Signal Wire</text>
+  <rect x="55" y="548" width="12" height="12" fill="#222" stroke="#555" stroke-width="1"/>
+  <text x="92" y="559" fill="#444" font-size="10">IC Package (DIP)</text>
+  <circle cx="61" cy="571" r="6" fill="#fff" stroke="#333" stroke-width="2"/>
+  <text x="92" y="574" fill="#444" font-size="10">Transistor (NPN BJT)</text>
+
+</svg>
