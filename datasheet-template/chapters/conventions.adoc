@@ -28,12 +28,23 @@ f_(PWM) = f_(clk) / ((Prescaler + 1) * (Period + 1))
 ++++
 ----
 
+It will be rendered as:
+
+:stem: asciimath
+
+[asciimath]
+++++
+f_(PWM) = f_(clk) / ((Prescaler + 1) * (Period + 1))
+++++
+
 * 行内公式用：
 +
 [source,adoc]
 ----
 stem:[f_(PWM) = f_(clk) / ((Prescaler + 1) * (Period + 1))]
 ----
+
+it will be rendered as:    stem:[f_(PWM) = f_(clk) / ((Prescaler + 1) * (Period + 1))] format 
 
 * 如果公式较复杂，优先考虑：
 ** 用变量定义 + 文字说明拆解（可读性更强）
@@ -48,8 +59,7 @@ stem:[f_(PWM) = f_(clk) / ((Prescaler + 1) * (Period + 1))]
 * 文件命名建议：`schematic_top.svg`, `schematic_power.svg`, `schematic_io.svg`
 * 引用方式示例：
 +
-[source,adoc]
-----
+
 .电源模块原理图 (Power Schematic)
-image::schematic_power.svg[width=95%,align=center]
-----
+image::schematic.svg[width=95%,align=center]
+
