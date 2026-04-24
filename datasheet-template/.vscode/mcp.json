@@ -1,0 +1,27 @@
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "c:\\Users\\Public\\ubuntu-workspace\\ASCIIDoc-Template\\datasheet-template"],
+      "env": {}
+    },
+    "shell": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-bash"],
+      "env": {
+        "SHELL": "/bin/bash",
+        "PATH": "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+      }
+    },
+    "git": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-git"],
+      "env": {}
+    },
+    "docker": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-docker"],
+      "env": {}
+    }
+  }
+}
