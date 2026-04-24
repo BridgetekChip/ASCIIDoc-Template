@@ -1,9 +1,7 @@
 extends: default
 
-# Asciidoctor PDF theme for CJK.
-#
-# NOTE: Font filenames can vary by distro.
-# If build fails, run `fc-list | grep -i "noto.*cjk"` and update below.
+# Minimal CJK theme using only Noto fonts
+
 font:
   catalog:
     NotoSansCJK:
@@ -16,16 +14,6 @@ font:
       bold: /usr/share/fonts/opentype/noto/NotoSerifCJK-Bold.ttc
       italic: /usr/share/fonts/opentype/noto/NotoSerifCJK-Regular.ttc
       bold_italic: /usr/share/fonts/opentype/noto/NotoSerifCJK-Bold.ttc
-    DejaVuSansMono:
-      normal: /usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf
-      bold: /usr/share/fonts/truetype/dejavu/DejaVuSansMono-Bold.ttf
-      italic: /usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf
-      bold_italic: /usr/share/fonts/truetype/dejavu/DejaVuSansMono-Bold.ttf
-    M+ 1mn:
-      normal: /usr/share/fonts/opentype/mplus/Mplus1Code-Regular.otf
-      bold: /usr/share/fonts/opentype/mplus/Mplus1Code-Bold.otf
-      italic: /usr/share/fonts/opentype/mplus/Mplus1Code-Light.otf
-      bold_italic: /usr/share/fonts/opentype/mplus/Mplus1Code-SemiBold.otf
   fallbacks:
     - NotoSansCJK
 
@@ -39,9 +27,8 @@ heading:
   font-style: bold
 
 code:
-  font-family: DejaVuSansMono
+  font-family: NotoSansCJK
   font-size: 9
 
-# Better spacing for Chinese paragraphs
 prose:
   margin-inner: 0
