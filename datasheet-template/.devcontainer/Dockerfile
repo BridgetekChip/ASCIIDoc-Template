@@ -46,9 +46,17 @@ WORKDIR /workspace
 # 安装字体管理工具
 RUN apt-get update && apt-get install -y fontconfig
 
-# 创建字体目录并拷贝
+# 创建字体目录
 RUN mkdir -p /usr/share/fonts/truetype/custom
-COPY ./fonts/*.ttf /usr/share/fonts/truetype/custom/
+
+# 拷贝字体文件（如果存在）
+# COPY ./fonts/*.ttf /usr/share/fonts/truetype/custom/ 2>/dev/null || true
 
 # 刷新系统字体缓存
 RUN fc-cache -f -v
+
+# 安装 Node.js 和 npm（用于 MCP 服务器）
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
+    apt-get install -y nodejs && \
+    npm install -g npm@latest && \
+    rm -rf /var/lib/apt/lists/*
