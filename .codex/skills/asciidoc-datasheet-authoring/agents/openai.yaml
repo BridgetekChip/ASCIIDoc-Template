@@ -1,0 +1,4 @@
+interface:
+  display_name: "AsciiDoc Datasheet"
+  short_description: "Edit modular AsciiDoc datasheets"
+  default_prompt: "Use this skill when working on modular AsciiDoc datasheet or programming-guide repositories with chapters, register snippets, generated HTML/PDF output, and authoring conventions."
