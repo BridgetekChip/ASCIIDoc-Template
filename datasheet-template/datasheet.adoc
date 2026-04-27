@@ -1,6 +1,6 @@
 = FT9xx Series 32-Bit Programming Guide
 :author: Software Engineering Team
-:email: paul.jiao@brtchip.comf
+:email: paul.jiao@brtchip.com
 :revnumber: v0.1
 :revdate: 2026-02-11
 :toc: 

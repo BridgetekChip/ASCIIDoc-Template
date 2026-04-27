@@ -13,7 +13,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     fonts-mplus \
     graphviz \
     plantuml \
-    unzip \
     wget \
     && rm -rf /var/lib/apt/lists/*
 
@@ -31,14 +30,11 @@ RUN wget -q "https://github.com/plantuml/plantuml/releases/download/v1.2024.6/pl
  && mkdir -p /usr/share/plantuml \
  && mv /tmp/plantuml.jar /usr/share/plantuml/plantuml.jar
 
-# Install region-specific Simplified Chinese fonts as standalone OTF files.
-# This avoids ambiguous TTC collection resolution that can select the JP face.
+# Install region-specific Simplified Chinese variable TTF fonts.
+# Asciidoctor PDF documents that TTF is the most reliable format for CJK fonts.
 RUN mkdir -p /usr/local/share/fonts/noto-cjk-sc \
- && wget -q "https://github.com/notofonts/noto-cjk/releases/download/Sans2.004/08_NotoSansCJKsc.zip" -O /tmp/NotoSansCJKsc.zip \
- && wget -q "https://github.com/notofonts/noto-cjk/releases/download/Sans2.004/13_NotoSansMonoCJKsc.zip" -O /tmp/NotoSansMonoCJKsc.zip \
- && unzip -oq /tmp/NotoSansCJKsc.zip -d /usr/local/share/fonts/noto-cjk-sc \
- && unzip -oq /tmp/NotoSansMonoCJKsc.zip -d /usr/local/share/fonts/noto-cjk-sc \
- && rm -f /tmp/NotoSansCJKsc.zip /tmp/NotoSansMonoCJKsc.zip
+ && wget -q "https://raw.githubusercontent.com/googlefonts/noto-cjk/main/Sans/Variable/TTF/NotoSansCJKsc-VF.ttf" -O /usr/local/share/fonts/noto-cjk-sc/NotoSansCJKsc-VF.ttf \
+ && wget -q "https://raw.githubusercontent.com/googlefonts/noto-cjk/main/Sans/Variable/TTF/Mono/NotoSansMonoCJKsc-VF.ttf" -O /usr/local/share/fonts/noto-cjk-sc/NotoSansMonoCJKsc-VF.ttf
 
 # If your project provides custom fonts, add a `fonts/` folder to the project root.
 # COPY ./fonts /usr/share/fonts/truetype/custom/
