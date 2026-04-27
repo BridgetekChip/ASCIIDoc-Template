@@ -601,7 +601,7 @@ pre.rouge .gs {
 <li><a href="#_ctrl_register_32_bit">7.1. CTRL Register (32-bit)</a>
 <ul class="sectlevel3">
 <li><a href="#_bitfield_diagram">7.1.1. Bitfield Diagram</a></li>
-<li><a href="#_field_description">7.1.2. Field Description</a></li>
+<li><a href="#_field_descriptions">7.1.2. Field Descriptions</a></li>
 <li><a href="#_c_example_read_modify_write">7.1.3. C Example (Read-Modify-Write)</a></li>
 </ul>
 </li>
@@ -701,12 +701,12 @@ pre.rouge .gs {
 <div class="sect3">
 <h4 id="_数学公式请勿使用_latex">3.1.1. 数学公式（请勿使用 LaTeX）</h4>
 <div class="paragraph">
-<p>为保证文档可在 HTML/PDF/Markdown 等多种格式之间更容易转换，并减少对 LaTeX/TeXLive 工具链的依赖：</p>
+<p>为提高文档在 HTML、PDF、Markdown 等格式之间的可移植性，并减少对 LaTeX/TeX Live 工具链的依赖，本项目统一推荐使用 AsciiMath 表达公式。</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>不要使用</strong> <code>latexmath</code> 或 LaTeX 语法块：</p>
+<p><strong>不要使用</strong> <code>latexmath</code> 块或 LaTeX 语法，例如：</p>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="adoc">[latexmath]
@@ -719,7 +719,7 @@ f_{PWM} = \frac{f_{clk}}{(Prescaler + 1) \times (Period + 1)}
 <li>
 <p><strong>请使用</strong> AsciiMath（推荐）或等价的纯文本表达。</p>
 <div class="paragraph">
-<p>推荐写法（AsciiMath）：</p>
+<p>推荐写法如下：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -735,7 +735,7 @@ f_(PWM) = f_(clk) / ((Prescaler + 1) * (Period + 1))
 </ul>
 </div>
 <div class="paragraph">
-<p>It will be rendered as:</p>
+<p>渲染效果如下：</p>
 </div>
 <div class="stemblock">
 <div class="content">
@@ -745,7 +745,7 @@ f_(PWM) = f_(clk) / ((Prescaler + 1) * (Period + 1))
 <div class="ulist">
 <ul>
 <li>
-<p>行内公式用：</p>
+<p>行内公式可写为：</p>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="adoc">stem:[f_(PWM) = f_(clk) / ((Prescaler + 1) * (Period + 1))]</code></pre>
@@ -755,7 +755,7 @@ f_(PWM) = f_(clk) / ((Prescaler + 1) * (Period + 1))
 </ul>
 </div>
 <div class="paragraph">
-<p>it will be rendered as:    \$f_(PWM) = f_(clk) / ((Prescaler + 1) * (Period + 1))\$ format</p>
+<p>渲染效果如下：\$f_(PWM) = f_(clk) / ((Prescaler + 1) * (Period + 1))\$</p>
 </div>
 <div class="ulist">
 <ul>
@@ -764,10 +764,13 @@ f_(PWM) = f_(clk) / ((Prescaler + 1) * (Period + 1))
 <div class="ulist">
 <ul>
 <li>
-<p>用变量定义 + 文字说明拆解（可读性更强）</p>
+<p>先用变量定义和文字说明拆解公式，提升可读性</p>
 </li>
 <li>
-<p>或使用由工具生成的 SVG/PNG 公式图，保持跨格式一致性</p>
+<p>或使用工具生成的 SVG/PNG 公式图，保持跨格式的一致性</p>
+</li>
+<li>
+<p>在同一篇文档中尽量保持公式表达方式一致，避免混用多种写法</p>
 </li>
 </ul>
 </div>
@@ -778,21 +781,24 @@ f_(PWM) = f_(clk) / ((Prescaler + 1) * (Period + 1))
 <div class="sect3">
 <h4 id="_电路原理图schematic请使用_svg">3.1.2. 电路原理图（Schematic）请使用 SVG</h4>
 <div class="paragraph">
-<p>为保证原理图在 HTML/PDF 中清晰缩放、打印不糊、并便于版本管理：</p>
+<p>为保证原理图在 HTML/PDF 中缩放清晰、打印可读，并便于版本管理，电路原理图、框图和连线图建议统一使用 SVG。</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>电路原理图/框图/连线图优先使用 <strong>SVG</strong>（矢量图）。</p>
+<p>电路原理图、框图和连线图优先使用 <strong>SVG</strong>（矢量图）。</p>
 </li>
 <li>
-<p>避免使用低分辨率 PNG/JPG 截图作为原理图（放大后会模糊、文字难读）。</p>
+<p>避免使用低分辨率 PNG/JPG 截图作为原理图，以免放大后模糊或文字难以辨认。</p>
 </li>
 <li>
-<p>文件命名建议：<code>schematic_top.svg</code>, <code>schematic_power.svg</code>, <code>schematic_io.svg</code></p>
+<p>文件命名建议采用语义化名称，例如 <code>schematic_top.svg</code>、<code>schematic_power.svg</code>、<code>schematic_io.svg</code>。</p>
 </li>
 <li>
-<p>引用方式示例：</p>
+<p>如果必须使用位图，请确保分辨率足够，并保留可编辑的原始文件。</p>
+</li>
+<li>
+<p>插图引用方式示例如下：</p>
 <div class="imageblock text-center">
 <div class="content">
 <img src="./images/schematic.svg" alt="schematic" width="95%">
@@ -815,12 +821,12 @@ f_(PWM) = f_(clk) / ((Prescaler + 1) * (Period + 1))
 <div class="sect2">
 <h3 id="_python_代码示例_python_code_examples">4.1. Python 代码示例 (Python Code Examples)</h3>
 <div class="paragraph">
-<p>当文档需要说明测试脚本、寄存器访问工具、产测脚本或主机侧参考程序时，可以直接在 AsciiDoc 中加入 Python 代码块。</p>
+<p>当文档需要说明测试脚本、寄存器访问工具、产测程序或主机侧参考实现时，可以直接在 AsciiDoc 中加入 Python 代码块。对于教程型文档，推荐让示例尽量保持可运行状态，避免只展示脱离上下文的语法片段。</p>
 </div>
 <div class="sect3">
 <h4 id="_直接写入_python_代码块">4.1.1. 直接写入 Python 代码块</h4>
 <div class="paragraph">
-<p>最简单的方式是在文档中使用 <code>source</code> 代码块，并将语言设置为 <code>python</code>：</p>
+<p>最直接的方式是在文档中使用 <code>source</code> 代码块，并将语言设置为 <code>python</code>：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -835,7 +841,7 @@ print(calc_pwm(48_000_000, 47, 999))
 </div>
 </div>
 <div class="paragraph">
-<p>渲染效果示例：</p>
+<p>渲染效果如下：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -850,7 +856,7 @@ print(calc_pwm(48_000_000, 47, 999))
 <div class="sect3">
 <h4 id="_从外部文件引入_python_示例">4.1.2. 从外部文件引入 Python 示例</h4>
 <div class="paragraph">
-<p>如果代码需要单独维护、运行或复用，推荐将 Python 示例保存为独立文件，再在文档中引用。这样更适合较长代码，也能避免文档中的代码与真实脚本不一致。</p>
+<p>如果代码需要单独维护、执行或复用，推荐将 Python 示例保存为独立文件，再在文档中引用。这种方式更适合较长脚本，也能避免文档中的示例与真实代码逐渐偏离。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -907,63 +913,14 @@ print(calc_pwm(48_000_000, 47, 999))
 </div>
 </div>
 <div class="paragraph">
-<p>以上python 文件引用是这么实现的：</p>
+<p>如果希望在教程中展示“如何引用文件”这段写法本身，可以使用字面量块：</p>
 </div>
-<div class="listingblock">
+<div class="literalblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="adoc">[source,python]
+<pre>[source,python]
 ----
-#!/usr/bin/env python3
-"""UART register access demo used by the datasheet examples."""
-
-from __future__ import annotations
-
-import argparse
-
-try:
-    import serial
-except ImportError:  # pragma: no cover - example fallback
-    serial = None
-
-
-def open_port(device: str, baudrate: int):
-    if serial is None:
-        raise RuntimeError("pyserial is required to run this example")
-    return serial.Serial(device, baudrate=baudrate, timeout=1)
-
-
-# tag::read_reg[]
-def read_reg(port, address):
-    port.write(f"READ {address:#06x}\n".encode())
-    return port.readline().decode().strip()
-# end::read_reg[]
-
-
-def write_reg(port, address, value):
-    port.write(f"WRITE {address:#06x} {value:#010x}\n".encode())
-    return port.readline().decode().strip()
-
-
-def parse_int(value: str) -&gt; int:
-    return int(value, 0)
-
-
-def main() -&gt; int:
-    parser = argparse.ArgumentParser(description="Read a register over UART.")
-    parser.add_argument("--port", required=True, help="Serial port device")
-    parser.add_argument("--baudrate", type=int, default=115200)
-    parser.add_argument("--address", type=parse_int, required=True)
-    args = parser.parse_args()
-
-    with open_port(args.port, args.baudrate) as port:
-        print(read_reg(port, args.address))
-
-    return 0
-
-
-if __name__ == "__main__":
-    raise SystemExit(main())
-----</code></pre>
+include::../examples/uart_demo.py[]
+----</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -977,7 +934,7 @@ if __name__ == "__main__":
 </div>
 </div>
 <div class="paragraph">
-<p>标签片段写法示例如下：</p>
+<p>外部文件中的标签片段写法示例如下：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -988,25 +945,39 @@ if __name__ == "__main__":
 <span class="c1"># end::read_reg[]</span></code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>在文档中引用该标签片段的写法如下：</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>[source,python]
+----
+include::../examples/uart_demo.py[tag=read_reg]
+----</pre>
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_推荐写法">4.1.3. 推荐写法</h4>
 <div class="ulist">
 <ul>
 <li>
-<p>示例代码尽量保持可运行，避免只保留语法碎片。</p>
+<p>示例代码尽量保持可运行，避免只保留孤立的语法片段。</p>
 </li>
 <li>
 <p>文档中的函数名、寄存器名、常量名应与正文保持一致。</p>
 </li>
 <li>
-<p>对于很长的脚本，正文只展示关键片段，完整脚本放在 <code>examples/</code> 或类似目录中。</p>
+<p>对于较长的脚本，正文中只展示关键片段，完整脚本放在 <code>examples/</code> 或类似目录中。</p>
 </li>
 <li>
-<p>当代码输出很重要时，可在代码块后补充一段简短说明，而不是在代码里塞过多注释。</p>
+<p>当代码输出对理解流程很重要时，可在代码块后补充一段简短说明，而不是在代码中加入过多注释。</p>
 </li>
 <li>
-<p>如果代码主要用于终端操作，命令行示例和 Python 代码建议分成两个独立代码块，便于阅读。</p>
+<p>如果代码主要用于终端操作，命令行示例与 Python 代码建议拆分为两个独立代码块，便于阅读和复制。</p>
+</li>
+<li>
+<p>多个代码示例应尽量采用一致的风格，例如统一缩进、命名方式和注释习惯。</p>
 </li>
 </ul>
 </div>
@@ -1118,6 +1089,9 @@ if __name__ == "__main__":
 <strong>Access:</strong> R/W<br>
 <strong>Reset:</strong> <code>0x0000_0000</code></p>
 </div>
+<div class="paragraph">
+<p>This register controls the basic operating mode, pull configuration, output speed, and interrupt behavior of the peripheral.</p>
+</div>
 <div class="sect3">
 <h4 id="_bitfield_diagram">7.1.1. Bitfield Diagram</h4>
 <table class="tableblock frame-all grid-all stretch">
@@ -1219,7 +1193,7 @@ if __name__ == "__main__":
 </table>
 </div>
 <div class="sect3">
-<h4 id="_field_description">7.1.2. Field Description</h4>
+<h4 id="_field_descriptions">7.1.2. Field Descriptions</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 14.2857%;">
@@ -1240,49 +1214,52 @@ if __name__ == "__main__":
 <td class="tableblock halign-left valign-top"><p class="tableblock">31:24</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">RESERVED</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x00</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Reserved. Keep at reset value.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reserved. Keep these bits at their reset value.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">23:16</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">SPEED</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x00</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Output speed. <code>0=Low</code>, <code>1=Med</code>, <code>2=High</code>, <code>3=VeryHigh</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Output speed selection. <code>0=Low</code>, <code>1=Medium</code>, <code>2=High</code>, <code>3=Very High</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">15:12</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">PULL</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Pull config. <code>0=None</code>, <code>1=Up</code>, <code>2=Down</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pull resistor configuration. <code>0=None</code>, <code>1=Pull-up</code>, <code>2=Pull-down</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">11:8</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MODE</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Mode. <code>0=Input</code>, <code>1=Output</code>, <code>2=AF</code>, <code>3=Analog</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pin mode selection. <code>0=Input</code>, <code>1=Output</code>, <code>2=Alternate Function</code>, <code>3=Analog</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">EN</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Enable. <code>0=Disable</code>, <code>1=Enable</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Peripheral enable control. <code>0=Disabled</code>, <code>1=Enabled</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">INTEN</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Interrupt enable. <code>0=Off</code>, <code>1=On</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Interrupt enable control. <code>0=Disabled</code>, <code>1=Enabled</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5:0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">KEY</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x00</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Write key. Must write <code>0x2A</code> to update MODE/PULL/SPEED.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Write key field. Software must write <code>0x2A</code> before updating <code>MODE</code>, <code>PULL</code>, or <code>SPEED</code>.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
 <h4 id="_c_example_read_modify_write">7.1.3. C Example (Read-Modify-Write)</h4>
+<div class="paragraph">
+<p>The following example updates the writable fields while preserving reserved bits and inserting the required key value.</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="c"><span class="cp">#include</span> <span class="cpf">&lt;stdint.h&gt;</span><span class="cp">

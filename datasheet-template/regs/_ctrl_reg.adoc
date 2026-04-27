@@ -6,6 +6,8 @@
 *Access:* R/W +
 *Reset:* `0x0000_0000`
 
+This register controls the basic operating mode, pull configuration, output speed, and interrupt behavior of the peripheral.
+
 === Bitfield Diagram
 
 .Bits 31..16
@@ -27,21 +29,23 @@
 6+^| KEY (5:0)
 |===
 
-=== Field Description
+=== Field Descriptions
 
 [cols="1,1,1,4", options="header"]
 |===
 | Bits | Field | Reset | Description
-| 31:24 | RESERVED | 0x00 | Reserved. Keep at reset value.
-| 23:16 | SPEED | 0x00 | Output speed. `0=Low`, `1=Med`, `2=High`, `3=VeryHigh`
-| 15:12 | PULL | 0x0 | Pull config. `0=None`, `1=Up`, `2=Down`
-| 11:8 | MODE | 0x0 | Mode. `0=Input`, `1=Output`, `2=AF`, `3=Analog`
-| 7 | EN | 0 | Enable. `0=Disable`, `1=Enable`
-| 6 | INTEN | 0 | Interrupt enable. `0=Off`, `1=On`
-| 5:0 | KEY | 0x00 | Write key. Must write `0x2A` to update MODE/PULL/SPEED.
+| 31:24 | RESERVED | 0x00 | Reserved. Keep these bits at their reset value.
+| 23:16 | SPEED | 0x00 | Output speed selection. `0=Low`, `1=Medium`, `2=High`, `3=Very High`
+| 15:12 | PULL | 0x0 | Pull resistor configuration. `0=None`, `1=Pull-up`, `2=Pull-down`
+| 11:8 | MODE | 0x0 | Pin mode selection. `0=Input`, `1=Output`, `2=Alternate Function`, `3=Analog`
+| 7 | EN | 0 | Peripheral enable control. `0=Disabled`, `1=Enabled`
+| 6 | INTEN | 0 | Interrupt enable control. `0=Disabled`, `1=Enabled`
+| 5:0 | KEY | 0x00 | Write key field. Software must write `0x2A` before updating `MODE`, `PULL`, or `SPEED`.
 |===
 
 === C Example (Read-Modify-Write)
+
+The following example updates the writable fields while preserving reserved bits and inserting the required key value.
 
 [source,c]
 ----

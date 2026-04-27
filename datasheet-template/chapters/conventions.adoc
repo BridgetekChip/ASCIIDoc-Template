@@ -2,9 +2,9 @@
 
 === 数学公式（请勿使用 LaTeX）
 
-为保证文档可在 HTML/PDF/Markdown 等多种格式之间更容易转换，并减少对 LaTeX/TeXLive 工具链的依赖：
+为提高文档在 HTML、PDF、Markdown 等格式之间的可移植性，并减少对 LaTeX/TeX Live 工具链的依赖，本项目统一推荐使用 AsciiMath 表达公式。
 
-* *不要使用* `latexmath` 或 LaTeX 语法块：
+* *不要使用* `latexmath` 块或 LaTeX 语法，例如：
 +
 [source,adoc]
 ----
@@ -16,7 +16,7 @@ f_{PWM} = \frac{f_{clk}}{(Prescaler + 1) \times (Period + 1)}
 
 * *请使用* AsciiMath（推荐）或等价的纯文本表达。
 +
-推荐写法（AsciiMath）：
+推荐写法如下：
 +
 [source,adoc]
 ----
@@ -28,7 +28,7 @@ f_(PWM) = f_(clk) / ((Prescaler + 1) * (Period + 1))
 ++++
 ----
 
-It will be rendered as:
+渲染效果如下：
 
 :stem: asciimath
 
@@ -37,29 +37,30 @@ It will be rendered as:
 f_(PWM) = f_(clk) / ((Prescaler + 1) * (Period + 1))
 ++++
 
-* 行内公式用：
+* 行内公式可写为：
 +
 [source,adoc]
 ----
 stem:[f_(PWM) = f_(clk) / ((Prescaler + 1) * (Period + 1))]
 ----
 
-it will be rendered as:    stem:[f_(PWM) = f_(clk) / ((Prescaler + 1) * (Period + 1))] format 
+渲染效果如下：stem:[f_(PWM) = f_(clk) / ((Prescaler + 1) * (Period + 1))]
 
 * 如果公式较复杂，优先考虑：
-** 用变量定义 + 文字说明拆解（可读性更强）
-** 或使用由工具生成的 SVG/PNG 公式图，保持跨格式一致性
+** 先用变量定义和文字说明拆解公式，提升可读性
+** 或使用工具生成的 SVG/PNG 公式图，保持跨格式的一致性
+** 在同一篇文档中尽量保持公式表达方式一致，避免混用多种写法
 
 === 电路原理图（Schematic）请使用 SVG
 
-为保证原理图在 HTML/PDF 中清晰缩放、打印不糊、并便于版本管理：
+为保证原理图在 HTML/PDF 中缩放清晰、打印可读，并便于版本管理，电路原理图、框图和连线图建议统一使用 SVG。
 
-* 电路原理图/框图/连线图优先使用 *SVG*（矢量图）。
-* 避免使用低分辨率 PNG/JPG 截图作为原理图（放大后会模糊、文字难读）。
-* 文件命名建议：`schematic_top.svg`, `schematic_power.svg`, `schematic_io.svg`
-* 引用方式示例：
+* 电路原理图、框图和连线图优先使用 *SVG*（矢量图）。
+* 避免使用低分辨率 PNG/JPG 截图作为原理图，以免放大后模糊或文字难以辨认。
+* 文件命名建议采用语义化名称，例如 `schematic_top.svg`、`schematic_power.svg`、`schematic_io.svg`。
+* 如果必须使用位图，请确保分辨率足够，并保留可编辑的原始文件。
+* 插图引用方式示例如下：
 +
 
 .电源模块原理图 (Power Schematic)
 image::schematic.svg[width=95%,align=center]
-
