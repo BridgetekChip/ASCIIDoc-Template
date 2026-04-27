@@ -29,6 +29,7 @@
 ====
 
 include::chapters/conventions.adoc[leveloffset=+1]
+include::chapters/python_code.adoc[leveloffset=+1]
 
 == 寄存器映射 (Register Maps)
 // 使用表格功能，AsciiDoc 的表格处理能力远超 Markdown
