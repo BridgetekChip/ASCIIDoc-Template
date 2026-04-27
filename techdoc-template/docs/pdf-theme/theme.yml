@@ -2,21 +2,20 @@ extends: default
 
 # Asciidoctor PDF theme for Simplified Chinese (SC).
 #
-# We use region-specific OTF files instead of a TTC collection because
-# Asciidoctor PDF / Prawn can otherwise select the JP face from the TTC.
+# Asciidoctor PDF documents that TTF is the most reliable CJK font format.
 font:
   catalog:
     merge: true
     NotoSansSC:
-      normal: /usr/local/share/fonts/noto-cjk-sc/NotoSansCJKsc-Regular.otf
-      bold: /usr/local/share/fonts/noto-cjk-sc/NotoSansCJKsc-Bold.otf
-      italic: /usr/local/share/fonts/noto-cjk-sc/NotoSansCJKsc-Regular.otf
-      bold_italic: /usr/local/share/fonts/noto-cjk-sc/NotoSansCJKsc-Bold.otf
+      normal: NotoSansCJKsc-VF.ttf
+      bold: NotoSansCJKsc-VF.ttf
+      italic: NotoSansCJKsc-VF.ttf
+      bold_italic: NotoSansCJKsc-VF.ttf
     NotoSansMonoSC:
-      normal: /usr/local/share/fonts/noto-cjk-sc/NotoSansMonoCJKsc-Regular.otf
-      bold: /usr/local/share/fonts/noto-cjk-sc/NotoSansMonoCJKsc-Bold.otf
-      italic: /usr/local/share/fonts/noto-cjk-sc/NotoSansMonoCJKsc-Regular.otf
-      bold_italic: /usr/local/share/fonts/noto-cjk-sc/NotoSansMonoCJKsc-Bold.otf
+      normal: NotoSansMonoCJKsc-VF.ttf
+      bold: NotoSansMonoCJKsc-VF.ttf
+      italic: NotoSansMonoCJKsc-VF.ttf
+      bold_italic: NotoSansMonoCJKsc-VF.ttf
   fallbacks:
     - Noto Serif
 
