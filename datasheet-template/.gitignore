@@ -5,3 +5,4 @@
 /.asciidoctor/
 /.diagrams/
 /images/diag-wavedrom-md5-*.svg
+/examples/__pycache__/*
