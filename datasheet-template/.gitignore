@@ -1,0 +1,7 @@
+# Generated build output
+/build/
+
+# Asciidoctor caches and generated diagram assets
+/.asciidoctor/
+/.diagrams/
+/images/diag-wavedrom-md5-*.svg

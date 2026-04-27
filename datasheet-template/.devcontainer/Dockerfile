@@ -1,62 +1,59 @@
-# 使用 Ruby 官方镜像
 FROM ruby:3.2-slim-bookworm
 
-# 安装系统依赖（包括中文字体支持和图形处理）
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    git \
-    curl \
-	fontconfig \
-    fonts-noto-cjk \
-    graphviz \
-    libjpeg-dev \
-    && rm -rf /var/lib/apt/lists/*
-
-
-# 刷新系统字体缓存
-RUN fc-cache -f -v    
+ARG PLANTUML_VERSION=1.2024.8
+ARG NOTO_CJK_REF=main
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    ruby-full \
-    graphviz \
+    build-essential \
+    ca-certificates \
+    chromium \
+    curl \
     default-jre \
- && gem install --no-document asciidoctor asciidoctor-pdf asciidoctor-diagram \
- && rm -rf /var/lib/apt/lists/*
+    fontconfig \
+    fonts-dejavu-core \
+    fonts-noto-cjk \
+    git \
+    graphviz \
+    libfontconfig1 \
+    libjpeg-dev \
+    libm17n-0 \
+    nodejs \
+    npm \
+    unzip \
+    && rm -rf /var/lib/apt/lists/*
 
-
-# 安装 Asciidoctor 核心工具链
-RUN gem install \
+RUN gem install --no-document \
     asciidoctor \
-    asciidoctor-pdf \
     asciidoctor-diagram \
+    asciidoctor-pdf \
     rouge \
     prawn-table
 
+RUN npm install -g playwright-core wavedrom@3.5.0
 
+COPY phantomjs-shim.cjs /usr/local/lib/phantomjs-shim.cjs
 
-# 安装用于数学公式渲染的二进制库
-RUN apt-get update && apt-get install -y \
-    libm17n-0 \
-    libfontconfig1
-    
+RUN chmod +x /usr/local/lib/phantomjs-shim.cjs \
+    && ln -sf /usr/local/lib/phantomjs-shim.cjs /usr/local/bin/phantomjs \
+    && ln -sf /usr/local/lib/phantomjs-shim.cjs /usr/local/bin/wavedrom-renderer
 
-# 设置工作目录
-WORKDIR /workspace
+RUN mkdir -p /usr/local/share/plantuml \
+    && curl -fsSL "https://github.com/plantuml/plantuml/releases/download/v${PLANTUML_VERSION}/plantuml-${PLANTUML_VERSION}.jar" \
+      -o /usr/local/share/plantuml/plantuml.jar
 
-# 安装字体管理工具
-RUN apt-get update && apt-get install -y fontconfig
+RUN mkdir -p /usr/local/share/fonts/noto-cjk-sc \
+    && curl -fsSL "https://raw.githubusercontent.com/notofonts/noto-cjk/${NOTO_CJK_REF}/Sans/Variable/TTF/NotoSansCJKsc-VF.ttf" \
+      -o /usr/local/share/fonts/noto-cjk-sc/NotoSansCJKsc-VF.ttf \
+    && curl -fsSL "https://raw.githubusercontent.com/notofonts/noto-cjk/${NOTO_CJK_REF}/Sans/Variable/TTF/Mono/NotoSansMonoCJKsc-VF.ttf" \
+      -o /usr/local/share/fonts/noto-cjk-sc/NotoSansMonoCJKsc-VF.ttf
 
-# 创建字体目录
-RUN mkdir -p /usr/share/fonts/truetype/custom
-
-# 拷贝字体文件（如果存在）
-# COPY ./fonts/*.ttf /usr/share/fonts/truetype/custom/ 2>/dev/null || true
-
-# 刷新系统字体缓存
 RUN fc-cache -f -v
 
-# 安装 Node.js 和 npm（用于 MCP 服务器）
-RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
-    apt-get install -y nodejs && \
-    npm install -g npm@latest && \
-    rm -rf /var/lib/apt/lists/*
+ENV DIAGRAM_PLANTUML_CLASSPATH=/usr/local/share/plantuml/plantuml.jar
+ENV CHROMIUM_EXECUTABLE=/usr/bin/chromium
+ENV NODE_PATH=/usr/local/lib/node_modules
+ENV PATH=/usr/local/bundle/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ENV PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
+ENV PHANTOMJS_EXECUTABLE=/usr/local/bin/phantomjs
+
+WORKDIR /workspace

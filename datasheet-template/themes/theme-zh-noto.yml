@@ -30,5 +30,8 @@ code:
   font-family: NotoSansCJK
   font-size: 9
 
+codespan:
+  font-family: NotoSansCJK
+
 prose:
   margin-inner: 0

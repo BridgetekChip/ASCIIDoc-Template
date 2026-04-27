@@ -3,6 +3,12 @@
     "build": {
         "dockerfile": "Dockerfile"
     },
+    "containerEnv": {
+        "CHROMIUM_EXECUTABLE": "/usr/bin/chromium",
+        "DIAGRAM_PLANTUML_CLASSPATH": "/usr/local/share/plantuml/plantuml.jar",
+        "PHANTOMJS_EXECUTABLE": "/usr/local/bin/phantomjs"
+    },
+    "postCreateCommand": "bash -lc 'wavedrom-renderer --version && java -jar /usr/local/share/plantuml/plantuml.jar -version && asciidoctor-pdf --version'",
     "customizations": {
         "vscode": {
             "extensions": [
@@ -18,4 +24,3 @@
     },
     "remoteUser": "root"
 }
-

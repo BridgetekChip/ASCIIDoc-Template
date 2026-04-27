@@ -1,46 +1,32 @@
 extends: default
 
-# Asciidoctor PDF theme for CJK.
-#
-# NOTE: Font filenames can vary by distro.
-# If build fails, run `fc-list | grep -i "noto.*cjk"` and update below.
+# Asciidoctor PDF theme for Simplified Chinese.
+# Use explicit SC TTF fonts instead of the distro TTC collection so glyph
+# selection doesn't fall back to the Japanese face.
 font:
   catalog:
-    NotoSansCJK:
-      normal: /usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc
-      bold: /usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc
-      italic: /usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc
-      bold_italic: /usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc
-    NotoSerifCJK:
-      normal: /usr/share/fonts/opentype/noto/NotoSerifCJK-Regular.ttc
-      bold: /usr/share/fonts/opentype/noto/NotoSerifCJK-Bold.ttc
-      italic: /usr/share/fonts/opentype/noto/NotoSerifCJK-Regular.ttc
-      bold_italic: /usr/share/fonts/opentype/noto/NotoSerifCJK-Bold.ttc
-    DejaVuSansMono:
-      normal: /usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf
-      bold: /usr/share/fonts/truetype/dejavu/DejaVuSansMono-Bold.ttf
-      italic: /usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf
-      bold_italic: /usr/share/fonts/truetype/dejavu/DejaVuSansMono-Bold.ttf
-    M+ 1mn:
-      normal: /usr/share/fonts/opentype/mplus/Mplus1Code-Regular.otf
-      bold: /usr/share/fonts/opentype/mplus/Mplus1Code-Bold.otf
-      italic: /usr/share/fonts/opentype/mplus/Mplus1Code-Light.otf
-      bold_italic: /usr/share/fonts/opentype/mplus/Mplus1Code-SemiBold.otf
+    merge: true
+    NotoSansSC: /usr/local/share/fonts/noto-cjk-sc/NotoSansCJKsc-VF.ttf
+    NotoSansMonoSC: /usr/local/share/fonts/noto-cjk-sc/NotoSansMonoCJKsc-VF.ttf
   fallbacks:
-    - NotoSansCJK
+    - Noto Serif
 
 base:
-  font-family: NotoSansCJK
+  font-family: NotoSansSC
   font-size: 10
   line-height-length: 14
+  text-align: left
 
 heading:
-  font-family: NotoSerifCJK
+  font-family: NotoSansSC
   font-style: bold
 
 code:
-  font-family: DejaVuSansMono
+  font-family: NotoSansMonoSC
   font-size: 9
+
+codespan:
+  font-family: NotoSansMonoSC
 
 # Better spacing for Chinese paragraphs
 prose:

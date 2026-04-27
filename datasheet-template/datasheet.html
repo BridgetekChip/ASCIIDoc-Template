@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.22">
+<meta name="generator" content="Asciidoctor 2.0.26">
 <meta name="author" content="Software Engineering Team">
 <title>FT9xx Series 32-Bit Programming Guide</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
@@ -117,7 +117,6 @@ h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title str
 :not(pre):not([class^=L])>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background:#f7f7f8;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed}
 pre{color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;line-height:1.45;text-rendering:optimizeSpeed}
 pre code,pre pre{color:inherit;font-size:inherit;line-height:inherit}
-pre>code{display:block}
 pre.nowrap,pre.nowrap pre{white-space:pre;word-wrap:normal}
 em em{font-style:normal}
 strong strong{font-weight:400}
@@ -220,6 +219,7 @@ table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
 .literalblock pre,.listingblock>.content>pre:not(.highlight),.listingblock>.content>pre[class=highlight],.listingblock>.content>pre[class^="highlight "]{background:#f7f7f8}
 .literalblock.output pre{color:#f7f7f8;background:rgba(0,0,0,.9)}
 .listingblock>.content{position:relative}
+.listingblock pre>code{display:block}
 .listingblock code[data-lang]::before{display:none;content:attr(data-lang);position:absolute;font-size:.75em;top:.425rem;right:.5rem;line-height:1;text-transform:uppercase;color:inherit;opacity:.5}
 .listingblock:hover code[data-lang]::before{display:block}
 .listingblock.terminal pre .command::before{content:attr(data-prompt);padding-right:.5em;color:inherit;opacity:.5}
@@ -435,9 +435,126 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
+<style>
+pre.rouge table td { padding: 5px; }
+pre.rouge table pre { margin: 0; }
+pre.rouge, pre.rouge .w {
+  color: #24292f;
+  background-color: #f6f8fa;
+}
+pre.rouge .k, pre.rouge .kd, pre.rouge .kn, pre.rouge .kp, pre.rouge .kr, pre.rouge .kt, pre.rouge .kv {
+  color: #cf222e;
+}
+pre.rouge .gr {
+  color: #f6f8fa;
+}
+pre.rouge .gd {
+  color: #82071e;
+  background-color: #ffebe9;
+}
+pre.rouge .nb {
+  color: #953800;
+}
+pre.rouge .nc {
+  color: #953800;
+}
+pre.rouge .no {
+  color: #953800;
+}
+pre.rouge .nn {
+  color: #953800;
+}
+pre.rouge .sr {
+  color: #116329;
+}
+pre.rouge .na {
+  color: #116329;
+}
+pre.rouge .nt {
+  color: #116329;
+}
+pre.rouge .gi {
+  color: #116329;
+  background-color: #dafbe1;
+}
+pre.rouge .ges {
+  font-weight: bold;
+  font-style: italic;
+}
+pre.rouge .kc {
+  color: #0550ae;
+}
+pre.rouge .l, pre.rouge .ld, pre.rouge .m, pre.rouge .mb, pre.rouge .mf, pre.rouge .mh, pre.rouge .mi, pre.rouge .il, pre.rouge .mo, pre.rouge .mx {
+  color: #0550ae;
+}
+pre.rouge .sb {
+  color: #0550ae;
+}
+pre.rouge .bp {
+  color: #0550ae;
+}
+pre.rouge .ne {
+  color: #0550ae;
+}
+pre.rouge .nl {
+  color: #0550ae;
+}
+pre.rouge .py {
+  color: #0550ae;
+}
+pre.rouge .nv, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi, pre.rouge .vm {
+  color: #0550ae;
+}
+pre.rouge .o, pre.rouge .ow {
+  color: #0550ae;
+}
+pre.rouge .gh {
+  color: #0550ae;
+  font-weight: bold;
+}
+pre.rouge .gu {
+  color: #0550ae;
+  font-weight: bold;
+}
+pre.rouge .s, pre.rouge .sa, pre.rouge .sc, pre.rouge .dl, pre.rouge .sd, pre.rouge .s2, pre.rouge .se, pre.rouge .sh, pre.rouge .sx, pre.rouge .s1, pre.rouge .ss {
+  color: #0a3069;
+}
+pre.rouge .nd {
+  color: #8250df;
+}
+pre.rouge .nf, pre.rouge .fm {
+  color: #8250df;
+}
+pre.rouge .err {
+  color: #f6f8fa;
+  background-color: #82071e;
+}
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cm, pre.rouge .cp, pre.rouge .cpf, pre.rouge .c1, pre.rouge .cs {
+  color: #6e7781;
+}
+pre.rouge .gl {
+  color: #6e7781;
+}
+pre.rouge .gt {
+  color: #6e7781;
+}
+pre.rouge .ni {
+  color: #24292f;
+}
+pre.rouge .si {
+  color: #24292f;
+}
+pre.rouge .ge {
+  color: #24292f;
+  font-style: italic;
+}
+pre.rouge .gs {
+  color: #24292f;
+  font-weight: bold;
+}
+</style>
 </head>
-<body class="article">
+<body class="article toc2 toc-left">
 <div id="header">
 <h1>FT9xx Series 32-Bit Programming Guide</h1>
 <div class="details">
@@ -446,10 +563,19 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <span id="revnumber">version v0.1,</span>
 <span id="revdate">2026-02-11</span>
 </div>
-<div id="toc" class="toc">
+<div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_概述_introduction">1. 概述 (Introduction)</a></li>
+<li><a href="#_概述_introduction">1. 概述 (Introduction)</a>
+<ul class="sectlevel2">
+<li><a href="#_写作规范_conventions">1.1. 写作规范 (Conventions)</a>
+<ul class="sectlevel3">
+<li><a href="#_数学公式请勿使用_latex">1.1.1. 数学公式（请勿使用 LaTeX）</a></li>
+<li><a href="#_电路原理图schematic请使用_svg">1.1.2. 电路原理图（Schematic）请使用 SVG</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a href="#_寄存器映射_register_maps">2. 寄存器映射 (Register Maps)</a></li>
 <li><a href="#_外设编程实例_peripheral_programming">3. 外设编程实例 (Peripheral Programming)</a>
 <ul class="sectlevel2">
@@ -505,6 +631,114 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </tr>
 </table>
 </div>
+<div class="sect2">
+<h3 id="_写作规范_conventions">1.1. 写作规范 (Conventions)</h3>
+<div class="sect3">
+<h4 id="_数学公式请勿使用_latex">1.1.1. 数学公式（请勿使用 LaTeX）</h4>
+<div class="paragraph">
+<p>为保证文档可在 HTML/PDF/Markdown 等多种格式之间更容易转换，并减少对 LaTeX/TeXLive 工具链的依赖：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>不要使用</strong> <code>latexmath</code> 或 LaTeX 语法块：</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="adoc">[latexmath]
+++++
+f_{PWM} = \frac{f_{clk}}{(Prescaler + 1) \times (Period + 1)}
+++++</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>请使用</strong> AsciiMath（推荐）或等价的纯文本表达。</p>
+<div class="paragraph">
+<p>推荐写法（AsciiMath）：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="adoc">:stem: asciimath
+
+[asciimath]
+++++
+f_(PWM) = f_(clk) / ((Prescaler + 1) * (Period + 1))
+++++</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>It will be rendered as:</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\$f_(PWM) = f_(clk) / ((Prescaler + 1) * (Period + 1))\$
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>行内公式用：</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="adoc">stem:[f_(PWM) = f_(clk) / ((Prescaler + 1) * (Period + 1))]</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>it will be rendered as:    \$f_(PWM) = f_(clk) / ((Prescaler + 1) * (Period + 1))\$ format</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>如果公式较复杂，优先考虑：</p>
+<div class="ulist">
+<ul>
+<li>
+<p>用变量定义 + 文字说明拆解（可读性更强）</p>
+</li>
+<li>
+<p>或使用由工具生成的 SVG/PNG 公式图，保持跨格式一致性</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_电路原理图schematic请使用_svg">1.1.2. 电路原理图（Schematic）请使用 SVG</h4>
+<div class="paragraph">
+<p>为保证原理图在 HTML/PDF 中清晰缩放、打印不糊、并便于版本管理：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>电路原理图/框图/连线图优先使用 <strong>SVG</strong>（矢量图）。</p>
+</li>
+<li>
+<p>避免使用低分辨率 PNG/JPG 截图作为原理图（放大后会模糊、文字难读）。</p>
+</li>
+<li>
+<p>文件命名建议：<code>schematic_top.svg</code>, <code>schematic_power.svg</code>, <code>schematic_io.svg</code></p>
+</li>
+<li>
+<p>引用方式示例：</p>
+<div class="imageblock text-center">
+<div class="content">
+<img src="./images/schematic.svg" alt="schematic" width="95%">
+</div>
+<div class="title">图 1. 电源模块原理图 (Power Schematic)</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -558,12 +792,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">#include "mcu_uart.h"
-
-void uart_init(uint32_t baudrate) {
-    UART-&gt;BAUD = SystemCoreClock / baudrate; // 设置波特率
-    UART-&gt;CTRL |= UART_ENABLE;               // 使能串口
-}</code></pre>
+<pre class="rouge highlight"><code data-lang="c"><span class="cp">#include</span> <span class="cpf">"mcu_uart.h"</span><span class="cp">
+</span>
+<span class="kt">void</span> <span class="nf">uart_init</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="n">baudrate</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">UART</span><span class="o">-&gt;</span><span class="n">BAUD</span> <span class="o">=</span> <span class="n">SystemCoreClock</span> <span class="o">/</span> <span class="n">baudrate</span><span class="p">;</span> <span class="c1">// 设置波特率</span>
+    <span class="n">UART</span><span class="o">-&gt;</span><span class="n">CTRL</span> <span class="o">|=</span> <span class="n">UART_ENABLE</span><span class="p">;</span>               <span class="c1">// 使能串口</span>
+<span class="p">}</span></code></pre>
 </div>
 </div>
 </div>
@@ -583,7 +817,7 @@ void uart_init(uint32_t baudrate) {
 <div class="sect3">
 <h4 id="_bitfield_diagram">4.1.1. Bitfield Diagram</h4>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 1. Bits 31..16</caption>
+<caption class="title">表 1. Bits 31..16</caption>
 <colgroup>
 <col style="width: 6.25%;">
 <col style="width: 6.25%;">
@@ -630,7 +864,7 @@ void uart_init(uint32_t baudrate) {
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 2. Bits 15..0</caption>
+<caption class="title">表 2. Bits 15..0</caption>
 <colgroup>
 <col style="width: 6.25%;">
 <col style="width: 6.25%;">
@@ -747,47 +981,47 @@ void uart_init(uint32_t baudrate) {
 <h4 id="_c_example_read_modify_write">4.1.3. C Example (Read-Modify-Write)</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">#include &lt;stdint.h&gt;
-
-#define REG32(addr) (*(volatile uint32_t *)(addr))
-
-#define CTRL_BASE   0x40020000UL
+<pre class="rouge highlight"><code data-lang="c"><span class="cp">#include</span> <span class="cpf">&lt;stdint.h&gt;</span><span class="cp">
+</span>
+<span class="cp">#define REG32(addr) (*(volatile uint32_t *)(addr))
+</span>
+<span class="cp">#define CTRL_BASE   0x40020000UL
 #define CTRL_OFF    0x00UL
 #define CTRL        REG32(CTRL_BASE + CTRL_OFF)
-
-#define CTRL_SPEED_Pos   16u
+</span>
+<span class="cp">#define CTRL_SPEED_Pos   16u
 #define CTRL_SPEED_Msk   (0xFFu &lt;&lt; CTRL_SPEED_Pos)
-
-#define CTRL_PULL_Pos    12u
+</span>
+<span class="cp">#define CTRL_PULL_Pos    12u
 #define CTRL_PULL_Msk    (0xFu  &lt;&lt; CTRL_PULL_Pos)
-
-#define CTRL_MODE_Pos    8u
+</span>
+<span class="cp">#define CTRL_MODE_Pos    8u
 #define CTRL_MODE_Msk    (0xFu  &lt;&lt; CTRL_MODE_Pos)
-
-#define CTRL_EN_Pos      7u
+</span>
+<span class="cp">#define CTRL_EN_Pos      7u
 #define CTRL_EN_Msk      (1u    &lt;&lt; CTRL_EN_Pos)
-
-#define CTRL_INTEN_Pos   6u
+</span>
+<span class="cp">#define CTRL_INTEN_Pos   6u
 #define CTRL_INTEN_Msk   (1u    &lt;&lt; CTRL_INTEN_Pos)
-
-#define CTRL_KEY_Pos     0u
+</span>
+<span class="cp">#define CTRL_KEY_Pos     0u
 #define CTRL_KEY_Msk     (0x3Fu &lt;&lt; CTRL_KEY_Pos)
 #define CTRL_KEY_VALUE   0x2Au
+</span>
+<span class="k">static</span> <span class="kr">inline</span> <span class="kt">void</span> <span class="nf">ctrl_config</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="n">mode</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">pull</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">speed</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">en</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">uint32_t</span> <span class="n">reg</span> <span class="o">=</span> <span class="n">CTRL</span><span class="p">;</span>
 
-static inline void ctrl_config(uint32_t mode, uint32_t pull, uint32_t speed, uint32_t en)
-{
-    uint32_t reg = CTRL;
+    <span class="c1">// Preserve reserved bits; only modify documented fields.</span>
+    <span class="n">reg</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="p">(</span><span class="n">CTRL_MODE_Msk</span> <span class="o">|</span> <span class="n">CTRL_PULL_Msk</span> <span class="o">|</span> <span class="n">CTRL_SPEED_Msk</span> <span class="o">|</span> <span class="n">CTRL_EN_Msk</span> <span class="o">|</span> <span class="n">CTRL_KEY_Msk</span><span class="p">);</span>
+    <span class="n">reg</span> <span class="o">|=</span> <span class="p">((</span><span class="n">mode</span>  <span class="o">&amp;</span> <span class="mh">0xFu</span><span class="p">)</span>  <span class="o">&lt;&lt;</span> <span class="n">CTRL_MODE_Pos</span><span class="p">);</span>
+    <span class="n">reg</span> <span class="o">|=</span> <span class="p">((</span><span class="n">pull</span>  <span class="o">&amp;</span> <span class="mh">0xFu</span><span class="p">)</span>  <span class="o">&lt;&lt;</span> <span class="n">CTRL_PULL_Pos</span><span class="p">);</span>
+    <span class="n">reg</span> <span class="o">|=</span> <span class="p">((</span><span class="n">speed</span> <span class="o">&amp;</span> <span class="mh">0xFFu</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">CTRL_SPEED_Pos</span><span class="p">);</span>
+    <span class="n">reg</span> <span class="o">|=</span> <span class="p">((</span><span class="n">en</span> <span class="o">?</span> <span class="mi">1u</span> <span class="o">:</span> <span class="mi">0u</span><span class="p">)</span>  <span class="o">&lt;&lt;</span> <span class="n">CTRL_EN_Pos</span><span class="p">);</span>
+    <span class="n">reg</span> <span class="o">|=</span> <span class="p">(</span><span class="n">CTRL_KEY_VALUE</span>  <span class="o">&lt;&lt;</span> <span class="n">CTRL_KEY_Pos</span><span class="p">);</span>
 
-    // Preserve reserved bits; only modify documented fields.
-    reg &amp;= ~(CTRL_MODE_Msk | CTRL_PULL_Msk | CTRL_SPEED_Msk | CTRL_EN_Msk | CTRL_KEY_Msk);
-    reg |= ((mode  &amp; 0xFu)  &lt;&lt; CTRL_MODE_Pos);
-    reg |= ((pull  &amp; 0xFu)  &lt;&lt; CTRL_PULL_Pos);
-    reg |= ((speed &amp; 0xFFu) &lt;&lt; CTRL_SPEED_Pos);
-    reg |= ((en ? 1u : 0u)  &lt;&lt; CTRL_EN_Pos);
-    reg |= (CTRL_KEY_VALUE  &lt;&lt; CTRL_KEY_Pos);
-
-    CTRL = reg;
-}</code></pre>
+    <span class="n">CTRL</span> <span class="o">=</span> <span class="n">reg</span><span class="p">;</span>
+<span class="p">}</span></code></pre>
 </div>
 </div>
 </div>
@@ -930,38 +1164,38 @@ static inline void ctrl_config(uint32_t mode, uint32_t pull, uint32_t speed, uin
 <h4 id="_c_access_example">6.1.3. C Access Example</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">#include &lt;stdint.h&gt;
-
-#define GPIO_BASE      (0x40020000UL)
+<pre class="rouge highlight"><code data-lang="c"><span class="cp">#include</span> <span class="cpf">&lt;stdint.h&gt;</span><span class="cp">
+</span>
+<span class="cp">#define GPIO_BASE      (0x40020000UL)
 #define GPIO_MODE_OFF  (0x00UL)
 #define GPIO_MODE      (*(volatile uint32_t *)(GPIO_BASE + GPIO_MODE_OFF))
-
-// Bit positions / masks
-#define GPIO_MODE_MODE_Pos   0
+</span>
+<span class="c1">// Bit positions / masks</span>
+<span class="cp">#define GPIO_MODE_MODE_Pos   0
 #define GPIO_MODE_MODE_Msk   (0xFUL &lt;&lt; GPIO_MODE_MODE_Pos)
-
-#define GPIO_MODE_PULL_Pos   4
+</span>
+<span class="cp">#define GPIO_MODE_PULL_Pos   4
 #define GPIO_MODE_PULL_Msk   (0xFUL &lt;&lt; GPIO_MODE_PULL_Pos)
-
-#define GPIO_MODE_SPEED_Pos  8
+</span>
+<span class="cp">#define GPIO_MODE_SPEED_Pos  8
 #define GPIO_MODE_SPEED_Msk  (0xFFUL &lt;&lt; GPIO_MODE_SPEED_Pos)
+</span>
+<span class="k">static</span> <span class="kr">inline</span> <span class="kt">void</span> <span class="nf">gpio_mode_set</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="n">mode</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">pull</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">speed</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">uint32_t</span> <span class="n">reg</span> <span class="o">=</span> <span class="n">GPIO_MODE</span><span class="p">;</span>
 
-static inline void gpio_mode_set(uint32_t mode, uint32_t pull, uint32_t speed)
-{
-    uint32_t reg = GPIO_MODE;
+    <span class="n">reg</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="p">(</span><span class="n">GPIO_MODE_MODE_Msk</span> <span class="o">|</span> <span class="n">GPIO_MODE_PULL_Msk</span> <span class="o">|</span> <span class="n">GPIO_MODE_SPEED_Msk</span><span class="p">);</span>
+    <span class="n">reg</span> <span class="o">|=</span> <span class="p">((</span><span class="n">mode</span>  <span class="o">&amp;</span> <span class="mh">0xFUL</span><span class="p">)</span>  <span class="o">&lt;&lt;</span> <span class="n">GPIO_MODE_MODE_Pos</span><span class="p">);</span>
+    <span class="n">reg</span> <span class="o">|=</span> <span class="p">((</span><span class="n">pull</span>  <span class="o">&amp;</span> <span class="mh">0xFUL</span><span class="p">)</span>  <span class="o">&lt;&lt;</span> <span class="n">GPIO_MODE_PULL_Pos</span><span class="p">);</span>
+    <span class="n">reg</span> <span class="o">|=</span> <span class="p">((</span><span class="n">speed</span> <span class="o">&amp;</span> <span class="mh">0xFFUL</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">GPIO_MODE_SPEED_Pos</span><span class="p">);</span>
 
-    reg &amp;= ~(GPIO_MODE_MODE_Msk | GPIO_MODE_PULL_Msk | GPIO_MODE_SPEED_Msk);
-    reg |= ((mode  &amp; 0xFUL)  &lt;&lt; GPIO_MODE_MODE_Pos);
-    reg |= ((pull  &amp; 0xFUL)  &lt;&lt; GPIO_MODE_PULL_Pos);
-    reg |= ((speed &amp; 0xFFUL) &lt;&lt; GPIO_MODE_SPEED_Pos);
+    <span class="n">GPIO_MODE</span> <span class="o">=</span> <span class="n">reg</span><span class="p">;</span>
+<span class="p">}</span>
 
-    GPIO_MODE = reg;
-}
-
-static inline uint32_t gpio_mode_get(void)
-{
-    return GPIO_MODE;
-}</code></pre>
+<span class="k">static</span> <span class="kr">inline</span> <span class="kt">uint32_t</span> <span class="nf">gpio_mode_get</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">GPIO_MODE</span><span class="p">;</span>
+<span class="p">}</span></code></pre>
 </div>
 </div>
 <h2 id="_notes" class="discrete">Notes</h2>
@@ -985,9 +1219,9 @@ static inline uint32_t gpio_mode_get(void)
 <div class="paragraph">
 <p>以下是 SPI 数据传输的典型时序要求：</p>
 </div>
-<div class="imageblock kroki">
+<div class="imageblock">
 <div class="content">
-<img src="https://kroki.io/wavedrom/svg/eNqrVlAqzkzPS8xRslKI5lJQqFZQykvMTQXylIKdvZV0FBSUyhPLwPwCPTBQUqjVQVXo6x_sCVQJV1ihZ2xiagZUCRRLSSxJBBmt5GgO4jqagUlTMGmiFItplmewP6pZEEtBDoGb5WKORadzsB-Kcw31DIAaDUHu5YqtBQB-qzcJ" alt="Diagram">
+<img src="./images/diag-wavedrom-md5-ece88c97698b71351cee09c1c91313a0.svg" alt="Diagram" width="400" height="120">
 </div>
 </div>
 </div>
@@ -998,19 +1232,19 @@ static inline uint32_t gpio_mode_get(void)
 <div class="paragraph">
 <p>This diagram is drawn by plantuml code.</p>
 </div>
-<div class="imageblock kroki">
+<div class="imageblock">
 <div class="content">
-<img src="https://kroki.io/plantuml/svg/eNpNj81qwzAQhO96isH3vEAphdrExgdTY5NT6WFR1j9EkYykQELou1cr59CDxO4O385suKx2I09XaHfdnGUbx_gwDM86kp0NK7WRvtDMKLrqhMp5LvBUwHcqI98PHXrvNIfg_A8ooOpP6vcfNfYtevbrtrAn82IHntcQ2aO16Z9Ic2aHYyNq3dZfKG_TxPtK6WU-RoqMjvSy2h2ox06Ekm5nDCI2bLNQDo2ksO6cIhzvycSSQW0oLEUGpVIqhcX74UOM8YbPvky2QUkn0-ybw-QueaW1eJXp7WPZlGC5U-A_qttmcg==" alt="arch_diagram">
+<img src="./images/arch_diagram.svg" alt="arch diagram" width="1068" height="152">
 </div>
 </div>
 <div class="paragraph">
 <p>It can be done by inserting the image :</p>
 </div>
-<div id="fig_arch" class="imageblock text-center">
+<div class="imageblock text-center figcap-center">
 <div class="content">
 <img src="./images/BT820architecture.png" alt="BT820architecture" width="600">
 </div>
-<div class="title">Figure 1. 系统架构框图</div>
+<div class="title">Figure 图 2. System Diagram (系统架构框图)</div>
 </div>
 <h2 id="_修订记录_revision_history" class="discrete">修订记录 (Revision History)</h2>
 <table class="tableblock frame-all grid-all stretch">
@@ -1049,16 +1283,9 @@ static inline uint32_t gpio_mode_get(void)
 <div id="footer">
 <div id="footer-text">
 Version v0.1<br>
-Last updated 2026-02-12 03:30:16 UTC
+Last updated 2026-04-24 07:41:19 UTC
 </div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
-<script>
-if (!hljs.initHighlighting.called) {
-  hljs.initHighlighting.called = true
-  ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
-}
-</script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   messageStyle: "none",
@@ -1082,6 +1309,6 @@ MathJax.Hub.Register.StartupHook("AsciiMath Jax Ready", function () {
   })
 })
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
