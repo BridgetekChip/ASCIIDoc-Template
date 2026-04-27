@@ -1,4 +1,3 @@
-\
 #!/usr/bin/env bash
 set -euo pipefail
 
@@ -13,9 +12,10 @@ export DIAGRAM_PLANTUML_CLASSPATH="$(dpkg -L plantuml | grep -i '\.jar$' | head 
 
 
 mkdir -p "${OUT_DIR}"
+mkdir -p "${OUT_DIR}/styles"
 
-# Copy styles to output directory so they're available relative to HTML
-cp -r "${CSS_DIR}"/* "${OUT_DIR}/" 2>/dev/null || true
+# Copy styles to the relative directory referenced by the generated HTML.
+cp -r "${CSS_DIR}"/. "${OUT_DIR}/styles/" 2>/dev/null || true
 
 # Copy images to output directory
 cp -r "${ROOT_DIR}/docs/images" "${OUT_DIR}/" 2>/dev/null || true

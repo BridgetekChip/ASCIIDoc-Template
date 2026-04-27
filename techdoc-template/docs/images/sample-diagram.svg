@@ -2,11 +2,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="420" viewBox="0 0 800 420">
   <defs>
     <style type="text/css">
-      @font-face {
-        font-family: "NotoSansCJK";
-        src: url("/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc");
+      text {
+        font-family: "Noto Sans CJK SC", "Noto Sans CJK", "Microsoft YaHei", "PingFang SC", sans-serif;
       }
-      text { font-family: "NotoSansCJK"; }
     </style>
   </defs>
   <rect x="0" y="0" width="800" height="420" fill="#ffffff" stroke="#333333" stroke-width="2"/>
