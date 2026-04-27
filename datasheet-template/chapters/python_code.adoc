@@ -1,0 +1,73 @@
+== Python 代码示例 (Python Code Examples)
+
+当文档需要说明测试脚本、寄存器访问工具、产测脚本或主机侧参考程序时，可以直接在 AsciiDoc 中加入 Python 代码块。
+
+=== 直接写入 Python 代码块
+
+最简单的方式是在文档中使用 `source` 代码块，并将语言设置为 `python`：
+
+[source,adoc]
+....
+[source,python]
+----
+def calc_pwm(clk_hz, prescaler, period):
+    return clk_hz / ((prescaler + 1) * (period + 1))
+
+
+print(calc_pwm(48_000_000, 47, 999))
+----
+....
+
+渲染效果示例：
+
+[source,python]
+----
+def calc_pwm(clk_hz, prescaler, period):
+    return clk_hz / ((prescaler + 1) * (period + 1))
+
+
+print(calc_pwm(48_000_000, 47, 999))
+----
+
+=== 从外部文件引入 Python 示例
+
+如果代码需要单独维护、运行或复用，推荐将 Python 示例保存为独立文件，再在文档中引用。这样更适合较长代码，也能避免文档中的代码与真实脚本不一致。
+
+[source,python]
+----
+include::../examples/uart_demo.py[]
+----
+
+如果只希望展示文件中的一部分内容，推荐使用标签：
+
+[source,python]
+----
+include::../examples/uart_demo.py[tag=read_reg]
+----
+
+标签片段写法示例如下：
+
+[source,python]
+----
+# tag::read_reg[]
+def read_reg(port, address):
+    port.write(f"READ {address:#06x}\n".encode())
+    return port.readline().decode().strip()
+# end::read_reg[]
+----
+
+=== 推荐写法
+
+* 示例代码尽量保持可运行，避免只保留语法碎片。
+* 文档中的函数名、寄存器名、常量名应与正文保持一致。
+* 对于很长的脚本，正文只展示关键片段，完整脚本放在 `examples/` 或类似目录中。
+* 当代码输出很重要时，可在代码块后补充一段简短说明，而不是在代码里塞过多注释。
+* 如果代码主要用于终端操作，命令行示例和 Python 代码建议分成两个独立代码块，便于阅读。
+
+=== 适合放入文档的 Python 内容
+
+* 寄存器读写工具
+* UART / SPI / I2C 调试脚本
+* 产测或校准脚本示例
+* 数据解析、日志处理、绘图辅助脚本
+* 上位机验证流程中的参考实现
