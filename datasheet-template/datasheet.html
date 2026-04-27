@@ -559,54 +559,68 @@ pre.rouge .gs {
 <h1>FT9xx Series 32-Bit Programming Guide</h1>
 <div class="details">
 <span id="author" class="author">Software Engineering Team</span><br>
-<span id="email" class="email"><a href="mailto:paul.jiao@brtchip.comf">paul.jiao@brtchip.comf</a></span><br>
+<span id="email" class="email"><a href="mailto:paul.jiao@brtchip.com">paul.jiao@brtchip.com</a></span><br>
 <span id="revnumber">version v0.1,</span>
 <span id="revdate">2026-02-11</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_概述_introduction">1. 概述 (Introduction)</a>
+<li><a href="#_概述_introduction">1. 概述 (Introduction)</a></li>
+<li><a href="#_教程结构_tutorial_map">2. 教程结构 (Tutorial Map)</a></li>
+<li><a href="#_写作规范_authoring_conventions">3. 写作规范 (Authoring Conventions)</a>
 <ul class="sectlevel2">
-<li><a href="#_写作规范_conventions">1.1. 写作规范 (Conventions)</a>
+<li><a href="#_写作规范_conventions">3.1. 写作规范 (Conventions)</a>
 <ul class="sectlevel3">
-<li><a href="#_数学公式请勿使用_latex">1.1.1. 数学公式（请勿使用 LaTeX）</a></li>
-<li><a href="#_电路原理图schematic请使用_svg">1.1.2. 电路原理图（Schematic）请使用 SVG</a></li>
+<li><a href="#_数学公式请勿使用_latex">3.1.1. 数学公式（请勿使用 LaTeX）</a></li>
+<li><a href="#_电路原理图schematic请使用_svg">3.1.2. 电路原理图（Schematic）请使用 SVG</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#_寄存器映射_register_maps">2. 寄存器映射 (Register Maps)</a></li>
-<li><a href="#_外设编程实例_peripheral_programming">3. 外设编程实例 (Peripheral Programming)</a>
+<li><a href="#_代码示例_code_examples">4. 代码示例 (Code Examples)</a>
 <ul class="sectlevel2">
-<li><a href="#_uart_初始化">3.1. UART 初始化</a></li>
-</ul>
-</li>
-<li><a href="#_内容复用_modular_content">4. 内容复用 (Modular Content)</a>
-<ul class="sectlevel2">
-<li><a href="#_ctrl_register_32_bit">4.1. CTRL Register (32-bit)</a>
+<li><a href="#_python_代码示例_python_code_examples">4.1. Python 代码示例 (Python Code Examples)</a>
 <ul class="sectlevel3">
-<li><a href="#_bitfield_diagram">4.1.1. Bitfield Diagram</a></li>
-<li><a href="#_field_description">4.1.2. Field Description</a></li>
-<li><a href="#_c_example_read_modify_write">4.1.3. C Example (Read-Modify-Write)</a></li>
+<li><a href="#_直接写入_python_代码块">4.1.1. 直接写入 Python 代码块</a></li>
+<li><a href="#_从外部文件引入_python_示例">4.1.2. 从外部文件引入 Python 示例</a></li>
+<li><a href="#_推荐写法">4.1.3. 推荐写法</a></li>
+<li><a href="#_适合放入文档的_python_内容">4.1.4. 适合放入文档的 Python 内容</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#_公式与计算">5. 公式与计算</a></li>
-<li><a href="#_寄存器描述_32_bit_register_example">6. 寄存器描述 32-bit Register Example</a>
+<li><a href="#_寄存器映射_register_maps">5. 寄存器映射 (Register Maps)</a></li>
+<li><a href="#_外设编程实例_peripheral_programming">6. 外设编程实例 (Peripheral Programming)</a>
 <ul class="sectlevel2">
-<li><a href="#_gpio_mode_register_0x00">6.1. GPIO_MODE Register (0x00)</a>
+<li><a href="#_uart_初始化">6.1. UART 初始化</a></li>
+</ul>
+</li>
+<li><a href="#_内容复用_modular_content">7. 内容复用 (Modular Content)</a>
+<ul class="sectlevel2">
+<li><a href="#_ctrl_register_32_bit">7.1. CTRL Register (32-bit)</a>
 <ul class="sectlevel3">
-<li><a href="#_register_layout_32_bit">6.1.1. Register Layout (32-bit)</a></li>
-<li><a href="#_field_definitions">6.1.2. Field Definitions</a></li>
-<li><a href="#_c_access_example">6.1.3. C Access Example</a></li>
+<li><a href="#_bitfield_diagram">7.1.1. Bitfield Diagram</a></li>
+<li><a href="#_field_description">7.1.2. Field Description</a></li>
+<li><a href="#_c_example_read_modify_write">7.1.3. C Example (Read-Modify-Write)</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#_波形设计_timing_diagrams">7. 波形设计 (Timing Diagrams)</a></li>
-<li><a href="#_架构框图_architect_diagrams">8. 架构框图 architect diagrams</a></li>
+<li><a href="#_公式与计算_formulas">8. 公式与计算 (Formulas)</a></li>
+<li><a href="#_寄存器描述示例_register_description_example">9. 寄存器描述示例 (Register Description Example)</a>
+<ul class="sectlevel2">
+<li><a href="#_gpio_mode_register_0x00">9.1. GPIO_MODE Register (0x00)</a>
+<ul class="sectlevel3">
+<li><a href="#_register_layout_32_bit">9.1.1. Register Layout (32-bit)</a></li>
+<li><a href="#_field_definitions">9.1.2. Field Definitions</a></li>
+<li><a href="#_c_access_example">9.1.3. C Access Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_波形设计_timing_diagrams">10. 波形设计 (Timing Diagrams)</a></li>
+<li><a href="#_架构框图_architecture_diagrams">11. 架构框图 (Architecture Diagrams)</a></li>
 </ul>
 </div>
 </div>
@@ -615,7 +629,23 @@ pre.rouge .gs {
 <h2 id="_概述_introduction">1. 概述 (Introduction)</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>本文档旨在为嵌入式软件工程师提供系列 MCU 的底层驱动开发指南。</p>
+<p>本文档使用一个嵌入式软件手册的场景，演示如何用 AsciiDoc 编写结构化技术文档。它既是一个示例文档，也是一个可复用的教程模板。</p>
+</div>
+<div class="paragraph">
+<p>本教程面向以下读者：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>需要编写芯片数据手册、寄存器说明或编程指南的技术写作者</p>
+</li>
+<li>
+<p>需要维护驱动文档、测试脚本说明或接口说明的嵌入式软件工程师</p>
+</li>
+<li>
+<p>希望将文档拆分为模块化章节、统一样式并输出 HTML/PDF 的团队</p>
+</li>
+</ul>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -631,10 +661,45 @@ pre.rouge .gs {
 </tr>
 </table>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_教程结构_tutorial_map">2. 教程结构 (Tutorial Map)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>本示例按常见技术文档写作流程组织：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>先定义写作规范，统一公式、图片和格式</p>
+</li>
+<li>
+<p>再展示代码示例的写法与复用方式</p>
+</li>
+<li>
+<p>然后给出寄存器映射与详细寄存器描述</p>
+</li>
+<li>
+<p>最后补充公式、时序图、框图与修订记录</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>这样安排的目的，是让新作者先掌握文档约束，再学习具体内容模块如何落地。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_写作规范_authoring_conventions">3. 写作规范 (Authoring Conventions)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>本节用于约束团队写作方式。对于教程模板来说，写作规范应尽量明确，避免“文档能写出来，但每个人写法都不同”的情况。</p>
+</div>
 <div class="sect2">
-<h3 id="_写作规范_conventions">1.1. 写作规范 (Conventions)</h3>
+<h3 id="_写作规范_conventions">3.1. 写作规范 (Conventions)</h3>
 <div class="sect3">
-<h4 id="_数学公式请勿使用_latex">1.1.1. 数学公式（请勿使用 LaTeX）</h4>
+<h4 id="_数学公式请勿使用_latex">3.1.1. 数学公式（请勿使用 LaTeX）</h4>
 <div class="paragraph">
 <p>为保证文档可在 HTML/PDF/Markdown 等多种格式之间更容易转换，并减少对 LaTeX/TeXLive 工具链的依赖：</p>
 </div>
@@ -711,7 +776,7 @@ f_(PWM) = f_(clk) / ((Prescaler + 1) * (Period + 1))
 </div>
 </div>
 <div class="sect3">
-<h4 id="_电路原理图schematic请使用_svg">1.1.2. 电路原理图（Schematic）请使用 SVG</h4>
+<h4 id="_电路原理图schematic请使用_svg">3.1.2. 电路原理图（Schematic）请使用 SVG</h4>
 <div class="paragraph">
 <p>为保证原理图在 HTML/PDF 中清晰缩放、打印不糊、并便于版本管理：</p>
 </div>
@@ -742,8 +807,241 @@ f_(PWM) = f_(clk) / ((Prescaler + 1) * (Period + 1))
 </div>
 </div>
 <div class="sect1">
-<h2 id="_寄存器映射_register_maps">2. 寄存器映射 (Register Maps)</h2>
+<h2 id="_代码示例_code_examples">4. 代码示例 (Code Examples)</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>技术教程通常需要同时服务“阅读者”和“维护者”。因此，示例代码不仅要能看懂，也应尽量接近真实工程中的可维护形式。</p>
+</div>
+<div class="sect2">
+<h3 id="_python_代码示例_python_code_examples">4.1. Python 代码示例 (Python Code Examples)</h3>
+<div class="paragraph">
+<p>当文档需要说明测试脚本、寄存器访问工具、产测脚本或主机侧参考程序时，可以直接在 AsciiDoc 中加入 Python 代码块。</p>
+</div>
+<div class="sect3">
+<h4 id="_直接写入_python_代码块">4.1.1. 直接写入 Python 代码块</h4>
+<div class="paragraph">
+<p>最简单的方式是在文档中使用 <code>source</code> 代码块，并将语言设置为 <code>python</code>：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="adoc">[source,python]
+----
+def calc_pwm(clk_hz, prescaler, period):
+    return clk_hz / ((prescaler + 1) * (period + 1))
+
+
+print(calc_pwm(48_000_000, 47, 999))
+----</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>渲染效果示例：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="python"><span class="k">def</span> <span class="nf">calc_pwm</span><span class="p">(</span><span class="n">clk_hz</span><span class="p">,</span> <span class="n">prescaler</span><span class="p">,</span> <span class="n">period</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">clk_hz</span> <span class="o">/</span> <span class="p">((</span><span class="n">prescaler</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">period</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+
+
+<span class="nf">print</span><span class="p">(</span><span class="nf">calc_pwm</span><span class="p">(</span><span class="mi">48_000_000</span><span class="p">,</span> <span class="mi">47</span><span class="p">,</span> <span class="mi">999</span><span class="p">))</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_从外部文件引入_python_示例">4.1.2. 从外部文件引入 Python 示例</h4>
+<div class="paragraph">
+<p>如果代码需要单独维护、运行或复用，推荐将 Python 示例保存为独立文件，再在文档中引用。这样更适合较长代码，也能避免文档中的代码与真实脚本不一致。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="python"><span class="c1">#!/usr/bin/env python3
+</span><span class="sh">"""</span><span class="s">UART register access demo used by the datasheet examples.</span><span class="sh">"""</span>
+
+<span class="kn">from</span> <span class="n">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span> <span class="n">argparse</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="n">serial</span>
+<span class="k">except</span> <span class="nb">ImportError</span><span class="p">:</span>  <span class="c1"># pragma: no cover - example fallback
+</span>    <span class="n">serial</span> <span class="o">=</span> <span class="bp">None</span>
+
+
+<span class="k">def</span> <span class="nf">open_port</span><span class="p">(</span><span class="n">device</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">baudrate</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">serial</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="nc">RuntimeError</span><span class="p">(</span><span class="sh">"</span><span class="s">pyserial is required to run this example</span><span class="sh">"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">serial</span><span class="p">.</span><span class="nc">Serial</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">baudrate</span><span class="o">=</span><span class="n">baudrate</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+
+<span class="c1"># tag::read_reg[]
+</span><span class="k">def</span> <span class="nf">read_reg</span><span class="p">(</span><span class="n">port</span><span class="p">,</span> <span class="n">address</span><span class="p">):</span>
+    <span class="n">port</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">READ </span><span class="si">{</span><span class="n">address</span><span class="si">:</span><span class="c1">#06x</span><span class="si">}</span><span class="se">\n</span><span class="sh">"</span><span class="p">.</span><span class="nf">encode</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">port</span><span class="p">.</span><span class="nf">readline</span><span class="p">().</span><span class="nf">decode</span><span class="p">().</span><span class="nf">strip</span><span class="p">()</span>
+<span class="c1"># end::read_reg[]
+</span>
+
+<span class="k">def</span> <span class="nf">write_reg</span><span class="p">(</span><span class="n">port</span><span class="p">,</span> <span class="n">address</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="n">port</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">WRITE </span><span class="si">{</span><span class="n">address</span><span class="si">:</span><span class="c1">#06x</span><span class="si">}</span><span class="s"> </span><span class="si">{</span><span class="n">value</span><span class="si">:</span><span class="c1">#010x</span><span class="si">}</span><span class="se">\n</span><span class="sh">"</span><span class="p">.</span><span class="nf">encode</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">port</span><span class="p">.</span><span class="nf">readline</span><span class="p">().</span><span class="nf">decode</span><span class="p">().</span><span class="nf">strip</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">parse_int</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">return</span> <span class="nf">int</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="p">.</span><span class="nc">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="sh">"</span><span class="s">Read a register over UART.</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">parser</span><span class="p">.</span><span class="nf">add_argument</span><span class="p">(</span><span class="sh">"</span><span class="s">--port</span><span class="sh">"</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">help</span><span class="o">=</span><span class="sh">"</span><span class="s">Serial port device</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">parser</span><span class="p">.</span><span class="nf">add_argument</span><span class="p">(</span><span class="sh">"</span><span class="s">--baudrate</span><span class="sh">"</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">115200</span><span class="p">)</span>
+    <span class="n">parser</span><span class="p">.</span><span class="nf">add_argument</span><span class="p">(</span><span class="sh">"</span><span class="s">--address</span><span class="sh">"</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">parse_int</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="p">.</span><span class="nf">parse_args</span><span class="p">()</span>
+
+    <span class="k">with</span> <span class="nf">open_port</span><span class="p">(</span><span class="n">args</span><span class="p">.</span><span class="n">port</span><span class="p">,</span> <span class="n">args</span><span class="p">.</span><span class="n">baudrate</span><span class="p">)</span> <span class="k">as</span> <span class="n">port</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span><span class="nf">read_reg</span><span class="p">(</span><span class="n">port</span><span class="p">,</span> <span class="n">args</span><span class="p">.</span><span class="n">address</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="mi">0</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">"</span><span class="s">__main__</span><span class="sh">"</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="nc">SystemExit</span><span class="p">(</span><span class="nf">main</span><span class="p">())</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>以上python 文件引用是这么实现的：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="adoc">[source,python]
+----
+#!/usr/bin/env python3
+"""UART register access demo used by the datasheet examples."""
+
+from __future__ import annotations
+
+import argparse
+
+try:
+    import serial
+except ImportError:  # pragma: no cover - example fallback
+    serial = None
+
+
+def open_port(device: str, baudrate: int):
+    if serial is None:
+        raise RuntimeError("pyserial is required to run this example")
+    return serial.Serial(device, baudrate=baudrate, timeout=1)
+
+
+# tag::read_reg[]
+def read_reg(port, address):
+    port.write(f"READ {address:#06x}\n".encode())
+    return port.readline().decode().strip()
+# end::read_reg[]
+
+
+def write_reg(port, address, value):
+    port.write(f"WRITE {address:#06x} {value:#010x}\n".encode())
+    return port.readline().decode().strip()
+
+
+def parse_int(value: str) -&gt; int:
+    return int(value, 0)
+
+
+def main() -&gt; int:
+    parser = argparse.ArgumentParser(description="Read a register over UART.")
+    parser.add_argument("--port", required=True, help="Serial port device")
+    parser.add_argument("--baudrate", type=int, default=115200)
+    parser.add_argument("--address", type=parse_int, required=True)
+    args = parser.parse_args()
+
+    with open_port(args.port, args.baudrate) as port:
+        print(read_reg(port, args.address))
+
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
+----</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>如果只希望展示文件中的一部分内容，推荐使用标签：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="python"><span class="k">def</span> <span class="nf">read_reg</span><span class="p">(</span><span class="n">port</span><span class="p">,</span> <span class="n">address</span><span class="p">):</span>
+    <span class="n">port</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">READ </span><span class="si">{</span><span class="n">address</span><span class="si">:</span><span class="c1">#06x</span><span class="si">}</span><span class="se">\n</span><span class="sh">"</span><span class="p">.</span><span class="nf">encode</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">port</span><span class="p">.</span><span class="nf">readline</span><span class="p">().</span><span class="nf">decode</span><span class="p">().</span><span class="nf">strip</span><span class="p">()</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>标签片段写法示例如下：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="python"><span class="c1"># tag::read_reg[]
+</span><span class="k">def</span> <span class="nf">read_reg</span><span class="p">(</span><span class="n">port</span><span class="p">,</span> <span class="n">address</span><span class="p">):</span>
+    <span class="n">port</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">READ </span><span class="si">{</span><span class="n">address</span><span class="si">:</span><span class="c1">#06x</span><span class="si">}</span><span class="se">\n</span><span class="sh">"</span><span class="p">.</span><span class="nf">encode</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">port</span><span class="p">.</span><span class="nf">readline</span><span class="p">().</span><span class="nf">decode</span><span class="p">().</span><span class="nf">strip</span><span class="p">()</span>
+<span class="c1"># end::read_reg[]</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_推荐写法">4.1.3. 推荐写法</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>示例代码尽量保持可运行，避免只保留语法碎片。</p>
+</li>
+<li>
+<p>文档中的函数名、寄存器名、常量名应与正文保持一致。</p>
+</li>
+<li>
+<p>对于很长的脚本，正文只展示关键片段，完整脚本放在 <code>examples/</code> 或类似目录中。</p>
+</li>
+<li>
+<p>当代码输出很重要时，可在代码块后补充一段简短说明，而不是在代码里塞过多注释。</p>
+</li>
+<li>
+<p>如果代码主要用于终端操作，命令行示例和 Python 代码建议分成两个独立代码块，便于阅读。</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_适合放入文档的_python_内容">4.1.4. 适合放入文档的 Python 内容</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>寄存器读写工具</p>
+</li>
+<li>
+<p>UART / SPI / I2C 调试脚本</p>
+</li>
+<li>
+<p>产测或校准脚本示例</p>
+</li>
+<li>
+<p>数据解析、日志处理、绘图辅助脚本</p>
+</li>
+<li>
+<p>上位机验证流程中的参考实现</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_寄存器映射_register_maps">5. 寄存器映射 (Register Maps)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>寄存器映射表适合放在靠前位置，帮助读者快速理解模块范围、偏移地址和访问属性。</p>
+</div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -783,12 +1081,15 @@ f_(PWM) = f_(clk) / ((Prescaler + 1) * (Period + 1))
 </div>
 </div>
 <div class="sect1">
-<h2 id="_外设编程实例_peripheral_programming">3. 外设编程实例 (Peripheral Programming)</h2>
+<h2 id="_外设编程实例_peripheral_programming">6. 外设编程实例 (Peripheral Programming)</h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="_uart_初始化">3.1. UART 初始化</h3>
 <div class="paragraph">
-<p>以下是基于 <strong>C 语言</strong> 的初始化代码示例：</p>
+<p>在寄存器总览之后给出最小可读的初始化示例，能够帮助读者把“寄存器定义”与“实际使用方式”联系起来。</p>
+</div>
+<div class="sect2">
+<h3 id="_uart_初始化">6.1. UART 初始化</h3>
+<div class="paragraph">
+<p>以下是基于 <strong>C 语言</strong> 的 UART 初始化示例：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -804,10 +1105,13 @@ f_(PWM) = f_(clk) / ((Prescaler + 1) * (Period + 1))
 </div>
 </div>
 <div class="sect1">
-<h2 id="_内容复用_modular_content">4. 内容复用 (Modular Content)</h2>
+<h2 id="_内容复用_modular_content">7. 内容复用 (Modular Content)</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>较长的编程手册通常会把寄存器描述、接口章节或示例章节拆分到独立文件，再通过 <code>include::</code> 统一组装。这种方式更利于多人协作和版本维护。</p>
+</div>
 <div class="sect2">
-<h3 id="_ctrl_register_32_bit">4.1. CTRL Register (32-bit)</h3>
+<h3 id="_ctrl_register_32_bit">7.1. CTRL Register (32-bit)</h3>
 <div class="paragraph">
 <p><strong>Base Address:</strong> <code>0x4002_0000</code><br>
 <strong>Offset:</strong> <code>0x00</code><br>
@@ -815,7 +1119,7 @@ f_(PWM) = f_(clk) / ((Prescaler + 1) * (Period + 1))
 <strong>Reset:</strong> <code>0x0000_0000</code></p>
 </div>
 <div class="sect3">
-<h4 id="_bitfield_diagram">4.1.1. Bitfield Diagram</h4>
+<h4 id="_bitfield_diagram">7.1.1. Bitfield Diagram</h4>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">表 1. Bits 31..16</caption>
 <colgroup>
@@ -915,7 +1219,7 @@ f_(PWM) = f_(clk) / ((Prescaler + 1) * (Period + 1))
 </table>
 </div>
 <div class="sect3">
-<h4 id="_field_description">4.1.2. Field Description</h4>
+<h4 id="_field_description">7.1.2. Field Description</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 14.2857%;">
@@ -978,7 +1282,7 @@ f_(PWM) = f_(clk) / ((Prescaler + 1) * (Period + 1))
 </table>
 </div>
 <div class="sect3">
-<h4 id="_c_example_read_modify_write">4.1.3. C Example (Read-Modify-Write)</h4>
+<h4 id="_c_example_read_modify_write">7.1.3. C Example (Read-Modify-Write)</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="c"><span class="cp">#include</span> <span class="cpf">&lt;stdint.h&gt;</span><span class="cp">
@@ -1029,33 +1333,31 @@ f_(PWM) = f_(clk) / ((Prescaler + 1) * (Period + 1))
 </div>
 </div>
 <div class="sect1">
-<h2 id="_公式与计算">5. 公式与计算</h2>
+<h2 id="_公式与计算_formulas">8. 公式与计算 (Formulas)</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>对于 PWM 频率的计算，公式如下：</p>
-</div>
-<div class="stemblock">
-<div class="content">
-\[f_{PWM} = \frac{f_{clk}}{(Prescaler + 1) \times (Period + 1)}\]
-</div>
+<p>本模板推荐使用 AsciiMath 来表达公式，以便在 HTML、PDF 和其他转换场景中保持更稳定的兼容性。</p>
 </div>
 <div class="paragraph">
-<p>use ASCII math, 公式如下:</p>
+<p>对于 PWM 频率的计算，推荐写法如下：</p>
 </div>
 <div class="stemblock">
 <div class="content">
 \$f_(PWM) = f_(clk) / ((Prescaler + 1) * (Period + 1))\$
 </div>
 </div>
+<div class="paragraph">
+<p>行内公式也可以直接写为 \$f_(PWM) = f_(clk) / ((Prescaler + 1) * (Period + 1))\$。</p>
+</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_寄存器描述_32_bit_register_example">6. 寄存器描述 32-bit Register Example</h2>
+<h2 id="_寄存器描述示例_register_description_example">9. 寄存器描述示例 (Register Description Example)</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_gpio_mode_register_0x00">6.1. GPIO_MODE Register (0x00)</h3>
+<h3 id="_gpio_mode_register_0x00">9.1. GPIO_MODE Register (0x00)</h3>
 <div class="sect3">
-<h4 id="_register_layout_32_bit">6.1.1. Register Layout (32-bit)</h4>
+<h4 id="_register_layout_32_bit">9.1.1. Register Layout (32-bit)</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 8.3333%;">
@@ -1100,7 +1402,7 @@ f_(PWM) = f_(clk) / ((Prescaler + 1) * (Period + 1))
 </table>
 </div>
 <div class="sect3">
-<h4 id="_field_definitions">6.1.2. Field Definitions</h4>
+<h4 id="_field_definitions">9.1.2. Field Definitions</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1161,7 +1463,7 @@ f_(PWM) = f_(clk) / ((Prescaler + 1) * (Period + 1))
 </div>
 </div>
 <div class="sect3">
-<h4 id="_c_access_example">6.1.3. C Access Example</h4>
+<h4 id="_c_access_example">9.1.3. C Access Example</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="c"><span class="cp">#include</span> <span class="cpf">&lt;stdint.h&gt;</span><span class="cp">
@@ -1214,10 +1516,10 @@ f_(PWM) = f_(clk) / ((Prescaler + 1) * (Period + 1))
 </div>
 </div>
 <div class="sect1">
-<h2 id="_波形设计_timing_diagrams">7. 波形设计 (Timing Diagrams)</h2>
+<h2 id="_波形设计_timing_diagrams">10. 波形设计 (Timing Diagrams)</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>以下是 SPI 数据传输的典型时序要求：</p>
+<p>时序图适合用于协议说明、采样边沿说明以及初始化流程中的关键时序约束。以下示例使用 WaveDrom 表达 SPI 数据传输关系：</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1227,10 +1529,10 @@ f_(PWM) = f_(clk) / ((Prescaler + 1) * (Period + 1))
 </div>
 </div>
 <div class="sect1">
-<h2 id="_架构框图_architect_diagrams">8. 架构框图 architect diagrams</h2>
+<h2 id="_架构框图_architecture_diagrams">11. 架构框图 (Architecture Diagrams)</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This diagram is drawn by plantuml code.</p>
+<p>对于模块关系、总线连接和数据流向，PlantUML 是一种适合版本管理的文本化画图方式。</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1238,15 +1540,18 @@ f_(PWM) = f_(clk) / ((Prescaler + 1) * (Period + 1))
 </div>
 </div>
 <div class="paragraph">
-<p>It can be done by inserting the image :</p>
+<p>如果希望直接复用已有图片资源，也可以插入静态图像：</p>
 </div>
 <div class="imageblock text-center figcap-center">
 <div class="content">
 <img src="./images/BT820architecture.png" alt="BT820architecture" width="600">
 </div>
-<div class="title">Figure 图 2. System Diagram (系统架构框图)</div>
+<div class="title">图 2. System Diagram (系统架构框图)</div>
 </div>
 <h2 id="_修订记录_revision_history" class="discrete">修订记录 (Revision History)</h2>
+<div class="paragraph">
+<p>对于模板项目，修订记录既可以作为正式出版内容的一部分，也可以作为团队内部示例，用来说明版本信息该如何组织。</p>
+</div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -1283,7 +1588,7 @@ f_(PWM) = f_(clk) / ((Prescaler + 1) * (Period + 1))
 <div id="footer">
 <div id="footer-text">
 Version v0.1<br>
-Last updated 2026-04-24 07:41:19 UTC
+Last updated 2026-04-27 08:14:58 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

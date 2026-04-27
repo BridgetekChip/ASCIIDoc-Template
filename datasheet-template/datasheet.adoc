@@ -7,32 +7,55 @@
 :toclevels: 3
 :sectnums:
 :sectnumlevels: 3
-:source-highlighter: highlight.js
 :imagesdir: ./images
 :icons: font
 :figure-caption: 图
 :table-caption: 表
-:icons: font
 :source-highlighter: rouge
-:stem: mathjax
+:stem: asciimath
 :docinfo: shared
 :wavedrom:
 
-
-
 == 概述 (Introduction)
-本文档旨在为嵌入式软件工程师提供系列 MCU 的底层驱动开发指南。
+本文档使用一个嵌入式软件手册的场景，演示如何用 AsciiDoc 编写结构化技术文档。它既是一个示例文档，也是一个可复用的教程模板。
+
+本教程面向以下读者：
+
+* 需要编写芯片数据手册、寄存器说明或编程指南的技术写作者
+* 需要维护驱动文档、测试脚本说明或接口说明的嵌入式软件工程师
+* 希望将文档拆分为模块化章节、统一样式并输出 HTML/PDF 的团队
 
 [IMPORTANT]
 ====
 在操作高压外设前，请确保 VDD 处于 3.3V 稳定状态。
 ====
 
+== 教程结构 (Tutorial Map)
+
+本示例按常见技术文档写作流程组织：
+
+* 先定义写作规范，统一公式、图片和格式
+* 再展示代码示例的写法与复用方式
+* 然后给出寄存器映射与详细寄存器描述
+* 最后补充公式、时序图、框图与修订记录
+
+这样安排的目的，是让新作者先掌握文档约束，再学习具体内容模块如何落地。
+
+== 写作规范 (Authoring Conventions)
+
+本节用于约束团队写作方式。对于教程模板来说，写作规范应尽量明确，避免“文档能写出来，但每个人写法都不同”的情况。
+
 include::chapters/conventions.adoc[leveloffset=+1]
+
+== 代码示例 (Code Examples)
+
+技术教程通常需要同时服务“阅读者”和“维护者”。因此，示例代码不仅要能看懂，也应尽量接近真实工程中的可维护形式。
+
 include::chapters/python_code.adoc[leveloffset=+1]
 
 == 寄存器映射 (Register Maps)
-// 使用表格功能，AsciiDoc 的表格处理能力远超 Markdown
+寄存器映射表适合放在靠前位置，帮助读者快速理解模块范围、偏移地址和访问属性。
+
 [cols="2,1,1,4", options="header"]
 |===
 | Register Name | Offset | Access | Description
@@ -41,10 +64,13 @@ include::chapters/python_code.adoc[leveloffset=+1]
 | GPIO_IDATA   | 0x08   | R      | 输入数据寄存器
 |===
 
-==  外设编程实例 (Peripheral Programming)
+== 外设编程实例 (Peripheral Programming)
+
+在寄存器总览之后给出最小可读的初始化示例，能够帮助读者把“寄存器定义”与“实际使用方式”联系起来。
 
 === UART 初始化
-以下是基于 *C 语言* 的初始化代码示例：
+
+以下是基于 *C 语言* 的 UART 初始化示例：
 
 [source,c]
 ----
@@ -57,33 +83,25 @@ void uart_init(uint32_t baudrate) {
 ----
 
 == 内容复用 (Modular Content)
-// 嵌入式文档通常很长，你可以将每一章写在独立文件里，然后在这里包含进来
-// include::chapters/timer_module.adoc[leveloffset=+1]
+
+较长的编程手册通常会把寄存器描述、接口章节或示例章节拆分到独立文件，再通过 `include::` 统一组装。这种方式更利于多人协作和版本维护。
 
 include::regs/_ctrl_reg.adoc[leveloffset=+1]
 
+== 公式与计算 (Formulas)
 
+本模板推荐使用 AsciiMath 来表达公式，以便在 HTML、PDF 和其他转换场景中保持更稳定的兼容性。
 
-== 公式与计算
-对于 PWM 频率的计算，公式如下：
-
-[latexmath]
-++++
-f_{PWM} = \frac{f_{clk}}{(Prescaler + 1) \times (Period + 1)}
-++++
-
-use ASCII math, 公式如下: 
-
-:stem: asciimath
+对于 PWM 频率的计算，推荐写法如下：
 
 [asciimath]
 ++++
 f_(PWM) = f_(clk) / ((Prescaler + 1) * (Period + 1))
 ++++
 
+行内公式也可以直接写为 stem:[f_(PWM) = f_(clk) / ((Prescaler + 1) * (Period + 1))]。
 
-== 寄存器描述 32-bit Register Example
-
+== 寄存器描述示例 (Register Description Example)
 
 === GPIO_MODE Register (0x00)
 
@@ -156,20 +174,15 @@ static inline uint32_t gpio_mode_get(void)
 
 ----
 
-
-
-
-
 [discrete]
 == Notes
 
 * This register is 32-bit aligned, so offsets increment by 4 bytes (0x00, 0x04, 0x08...).
 * Always preserve *RESERVED* bits (read-modify-write) unless the spec says otherwise.
 
-
 == 波形设计 (Timing Diagrams)
 
-以下是 SPI 数据传输的典型时序要求：
+时序图适合用于协议说明、采样边沿说明以及初始化流程中的关键时序约束。以下示例使用 WaveDrom 表达 SPI 数据传输关系：
 
 [wavedrom,format=svg]
 ----
@@ -181,9 +194,9 @@ static inline uint32_t gpio_mode_get(void)
 ]}
 ----
 
-== 架构框图 architect diagrams
+== 架构框图 (Architecture Diagrams)
 
-This diagram is drawn by plantuml code. 
+对于模块关系、总线连接和数据流向，PlantUML 是一种适合版本管理的文本化画图方式。
 
 [plantuml, arch_diagram, svg]
 ----
@@ -211,20 +224,18 @@ FSM <-> Flash : SPI Bus
 @enduml
 ----
 
-It can be done by inserting the image :
+如果希望直接复用已有图片资源，也可以插入静态图像：
 
 [.figcap-center]
-:figure-caption: Figure 图
 .System Diagram (系统架构框图) 
-
 
 [align="center"]
 image::BT820architecture.png[width=600]
 
-
 [discrete]
 == 修订记录 (Revision History)
-// 这个标题会很大，但不会被编号为 "1."
+
+对于模板项目，修订记录既可以作为正式出版内容的一部分，也可以作为团队内部示例，用来说明版本信息该如何组织。
 
 [cols="1,1,2,6", options="header"]
 |===

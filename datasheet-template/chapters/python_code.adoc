@@ -38,6 +38,17 @@ print(calc_pwm(48_000_000, 47, 999))
 include::../examples/uart_demo.py[]
 ----
 
+以上python 文件引用是这么实现的： 
+
+[literal]
+....
+[source,python]
+----
+\include::../examples/uart_demo.py[]
+----
+....
+
+
 如果只希望展示文件中的一部分内容，推荐使用标签：
 
 [source,python]
@@ -55,6 +66,16 @@ def read_reg(port, address):
     return port.readline().decode().strip()
 # end::read_reg[]
 ----
+
+在文档如此引用标签片段： 
+
+[literal]
+....
+[source,python]
+----
+\include::../examples/uart_demo.py[tag=read_reg]
+----
+....
 
 === 推荐写法
 
