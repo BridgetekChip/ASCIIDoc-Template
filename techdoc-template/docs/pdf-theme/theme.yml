@@ -1,43 +1,45 @@
 extends: default
 
-# Asciidoctor PDF theme for CJK.
+# Asciidoctor PDF theme for Simplified Chinese (SC).
 #
-# NOTE: Font filenames can vary by distro.
-# If build fails, run `fc-list | grep -i "noto.*cjk"` and update below.
+# We use region-specific OTF files instead of a TTC collection because
+# Asciidoctor PDF / Prawn can otherwise select the JP face from the TTC.
 font:
   catalog:
-    NotoSansCJK:
-      normal: /usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc
-      bold: /usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc
-      italic: /usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc
-      bold_italic: /usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc
-    NotoSerifCJK:
-      normal: /usr/share/fonts/opentype/noto/NotoSerifCJK-Regular.ttc
-      bold: /usr/share/fonts/opentype/noto/NotoSerifCJK-Bold.ttc
-      italic: /usr/share/fonts/opentype/noto/NotoSerifCJK-Regular.ttc
-      bold_italic: /usr/share/fonts/opentype/noto/NotoSerifCJK-Bold.ttc
-    "M+ 1mn":
-      normal: /usr/share/fonts/truetype/mplus/mplus-1mn-regular.ttf
-      bold: /usr/share/fonts/truetype/mplus/mplus-1mn-bold.ttf
-      italic: /usr/share/fonts/truetype/mplus/mplus-1mn-regular.ttf
-      bold_italic: /usr/share/fonts/truetype/mplus/mplus-1mn-bold.ttf
+    merge: true
+    NotoSansSC:
+      normal: /usr/local/share/fonts/noto-cjk-sc/NotoSansCJKsc-Regular.otf
+      bold: /usr/local/share/fonts/noto-cjk-sc/NotoSansCJKsc-Bold.otf
+      italic: /usr/local/share/fonts/noto-cjk-sc/NotoSansCJKsc-Regular.otf
+      bold_italic: /usr/local/share/fonts/noto-cjk-sc/NotoSansCJKsc-Bold.otf
+    NotoSansMonoSC:
+      normal: /usr/local/share/fonts/noto-cjk-sc/NotoSansMonoCJKsc-Regular.otf
+      bold: /usr/local/share/fonts/noto-cjk-sc/NotoSansMonoCJKsc-Bold.otf
+      italic: /usr/local/share/fonts/noto-cjk-sc/NotoSansMonoCJKsc-Regular.otf
+      bold_italic: /usr/local/share/fonts/noto-cjk-sc/NotoSansMonoCJKsc-Bold.otf
   fallbacks:
-    - NotoSansCJK
+    - Noto Serif
 
 base:
-  font-family: "M+ 1mn"
+  font-family: NotoSansSC
   font-size: 10
   line-height-length: 14
+  text-align: left
 
 heading:
-  font-family: NotoSerifCJK
+  font-family: NotoSansSC
   font-style: bold
 
+codespan:
+  font-family: NotoSansMonoSC
+
+kbd:
+  font-family: $codespan-font-family
+
 code:
-  font-family: NotoSansCJK
+  font-family: $codespan-font-family
   font-size: 9
 
 # Better spacing for Chinese paragraphs
 prose:
   margin-inner: 0
-

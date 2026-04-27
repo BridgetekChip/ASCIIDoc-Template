@@ -23,7 +23,9 @@ Open Command Palette → **Tasks: Run Task**:
 
 ## Chinese fonts notes (PDF)
 
-The container installs `fonts-noto-cjk`. The PDF theme is configured to use Noto CJK fonts.
+The container installs `fonts-noto-cjk` and also downloads region-specific
+Simplified Chinese Noto Sans font files for PDF generation. This avoids the
+Japanese face being selected from a TTC collection during PDF export.
 
 If you ever see missing boxes (□) in PDF:
 - Run: `./scripts/check_fonts.sh`

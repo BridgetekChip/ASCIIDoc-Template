@@ -17,10 +17,11 @@ asciidoctor-pdf --trace\
   -r asciidoctor-diagram \
   -a lang=zh-CN \
   -a encoding=utf-8 \
+  -a scripts=cjk \
   -a source-highlighter=rouge \
   -a rouge-style=thankful_eyes \
   -a pdf-theme="${THEME}" \
-  -a pdf-fontsdir="${NOTO_FONT_DIR}" \
+  -a pdf-fontsdir="${NOTO_FONT_DIR},/usr/local/share/fonts/noto-cjk-sc" \
   -a diagramsdir="${ROOT_DIR}/.diagrams" \
   -a diagram-format=png \
   -o "${OUT_DIR}/index.pdf" \
