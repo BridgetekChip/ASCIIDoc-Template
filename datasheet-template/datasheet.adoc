@@ -27,7 +27,7 @@
 
 [IMPORTANT]
 ====
-在操作高压外设前，请确保 VDD 处于 3.3V 稳定状态。
+在操作高压外设前，请确保 VDD 处于 3.35V 稳定状态。
 ====
 
 == 教程结构 (Tutorial Map)
@@ -100,6 +100,8 @@ f_(PWM) = f_(clk) / ((Prescaler + 1) * (Period + 1))
 ++++
 
 行内公式也可以直接写为 stem:[f_(PWM) = f_(clk) / ((Prescaler + 1) * (Period + 1))]。
+
+See <<GPIO_CTRL_Register>> for configuration details.
 
 == 寄存器描述示例 (Register Description Example)
 

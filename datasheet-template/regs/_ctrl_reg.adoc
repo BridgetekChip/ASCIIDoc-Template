@@ -1,4 +1,5 @@
 
+[[GPIO_CTRL_Register]]
 == CTRL Register (32-bit)
 
 *Base Address:* `0x4002_0000` +
