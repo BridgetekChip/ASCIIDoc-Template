@@ -1,0 +1,337 @@
+// Bridgetek Application Note reusable AsciiDoc template
+// Converted from BRT_AN_Template_Ver.2.0.docx.
+// Replace bracketed instructional text and update document attributes below.
+// Optional images remain disabled until their attribute lines are uncommented.
+
+= Document Title
+Bridgetek Pte Ltd
+:doctype: article
+:notitle:
+:description: Reusable Bridgetek application note template
+:keywords: Bridgetek, BRTChip, application note
+:revnumber: 1.0
+:revdate: DD-MM-YYYY
+:revremark: Initial release
+:toc: macro
+:toclevels: 3
+:sectnums:
+:sectnumlevels: 3
+:icons: image
+:iconsdir: images
+:xrefstyle: short
+:figure-caption: Figure
+:table-caption: Table
+:imagesdir: images
+:source-highlighter: highlight.js
+
+// Document metadata
+:document-category: Application Note
+:document-code: AN_XXX
+:document-reference: BRT_XXXXXX
+:clearance-number: BRT#XXX
+:product-name: Product Name
+:product-page-url: https://brtchip.com/
+:contact-url: https://brtchip.com/contact-us/
+:distribution-network-url: https://brtchip.com/
+:feedback-email: docufeedback@brtchip.com
+:company-name: Bridgetek Pte Ltd
+:brand-name: BRTChip
+:company-address: 1 Tai Seng Avenue, Tower A, #03-05, Singapore 536464
+:company-telephone: +65 6547 4827
+:company-website: https://brtchip.com/
+:company-registration-number: 201542387H
+:copyright-year: YYYY
+
+// Branding metadata retained from the Word template.
+// Apply these values in an HTML stylesheet or an Asciidoctor PDF theme.
+:brand-primary-color: #0077C8
+:brand-accent-color: #990000
+:brand-note-background: #FCE4D6
+:brand-font-family: Verdana
+:page-format: A4 portrait
+
+// The Bridgetek logo and NOTE icon are bundled in the images directory.
+:brand-logo: bridgetek-logo.png
+// Optional product image. Uncomment and update the path when available.
+// :product-image: product-image.png
+
+// Uncomment this attribute only for an internal working copy.
+// :include-internal-revision-history:
+
+[.text-center]
+ifdef::brand-logo[]
+image::{brand-logo}[Bridgetek - Bridging Technology,300]
+endif::brand-logo[]
+
+[.text-center.cover-code]
+*{document-code}*
+
+[.text-center.cover-title]
+*{doctitle}*
+
+[.text-center.cover-category]
+*{document-category}*
+
+ifdef::product-image[]
+[.text-center]
+image::{product-image}[{product-name},500]
+endif::product-image[]
+
+[cols="1,1,1,1",options="header",stripes=none]
+|===
+|Document Reference #
+|Document Version #
+|Issue Date
+|Clearance #
+
+|{document-reference}
+|{revnumber}
+|{revdate}
+|{clearance-number}
+|===
+
+[.text-center.cover-safety]
+Use of {brand-name} devices in life support and/or safety applications is entirely at the user's risk, and the user agrees to defend, indemnify, and hold Bridgetek harmless from any and all damages, claims, suits, or expense resulting from such use.
+
+[.text-center.cover-contact]
+*{company-name} ({brand-name})* +
+{company-address} +
+Tel: {company-telephone} +
+Website: {company-website} +
+Copyright (C) {copyright-year} {company-name}
+
+<<<
+
+toc::[]
+
+<<<
+
+== Introduction
+
+_[Provide an introduction to the product, the problem it addresses, and the scope of this application note.]_
+
+=== Features
+
+_[List the product's principal features.]_
+
+* Feature 1
+* Feature 2
+* Feature 3
+* Feature 4
+* Feature 5
+
+== Heading 1
+
+_[Add the purpose and context for this section.]_
+
+[[tbl-example]]
+.Table Name
+[cols="1,1",options="header"]
+|===
+|Header
+|Header
+
+|Text
+|Text
+
+|Text
+|Text
+
+|Text
+|Text
+|===
+
+== Heading 1
+
+_[Add the purpose and context for this section.]_
+
+=== Heading 2
+
+_[Add section content.]_
+
+==== Heading 3
+
+_[Add subsection content.]_
+
+==== Heading 3
+
+_[Add subsection content.]_
+
+=== Heading 2
+
+_[Add section content.]_
+
+=== Heading 2
+
+_[Add section content.]_
+
+[NOTE]
+====
+Add the note here.
+====
+
+== Heading 1
+
+_[Add the purpose and context for this section.]_
+
+=== Heading 2
+
+_[Add section content.]_
+
+=== Heading 2
+
+_[Add section content.]_
+
+=== Heading 2
+
+_[Add section content.]_
+
+== Heading 1
+
+_[Add the purpose and context for this section.]_
+
+=== Heading 2
+
+_[Add section content.]_
+
+// Replace the image path below, then remove the leading comment markers.
+// [[fig-example]]
+// .Figure Name
+// image::figure-name.png[Figure description or alt text]
+
+=== Hardware Feature 2
+
+_[Describe the second hardware feature.]_
+
+== Heading 1
+
+_[Add section content.]_
+
+== Heading 1
+
+_[Add section content.]_
+
+== Heading 1
+
+_[Add section content.]_
+
+=== Heading 2
+
+_[Add section content.]_
+
+=== Heading 2
+
+_[Add section content.]_
+
+=== Heading 2
+
+_[Add section content.]_
+
+== Heading 1
+
+_[Add section content.]_
+
+== Contact Information
+
+Refer to {contact-url}[the Bridgetek contact page] for contact information.
+
+=== Distributor and Sales Representatives
+
+Visit {distribution-network-url}[the Bridgetek website] for distributor and sales representative contact details in your country.
+
+[.legal-notice]
+System and equipment manufacturers and designers are responsible to ensure that their systems, and any {company-name} ({brand-name}) devices incorporated in their systems, meet all applicable safety, regulatory and system-level performance requirements. All application-related information in this document (including application descriptions, suggested Bridgetek devices and other materials) is provided for reference only. While Bridgetek has taken care to assure it is accurate, this information is subject to customer confirmation, and Bridgetek disclaims all liability for system designs and for any applications assistance provided by Bridgetek. Use of Bridgetek devices in life support and/or safety applications is entirely at the user's risk, and the user agrees to defend, indemnify and hold harmless Bridgetek from all damages, claims, suits, or expense resulting from such use. This document is subject to change without notice. No freedom to use patents or other intellectual property rights is implied by the publication of this document. Neither the whole nor any part of the information contained in, or the product described in this document, may be adapted, or reproduced in any material or electronic form without the prior written consent of the copyright holder. {company-name}, {company-address}. Singapore Registered Company Number: {company-registration-number}.
+
+[appendix]
+== References
+
+=== Document References
+
+// Replace NA with numbered references or bibliography entries as appropriate.
+NA
+
+=== Acronyms and Abbreviations
+
+[cols="1,3",options="header"]
+|===
+|Term
+|Description
+
+|AAA
+|AAA
+
+|BBB
+|BBB
+|===
+
+// Keep the acronym table in alphabetical order.
+
+[appendix]
+== List of Figures and Tables
+
+=== List of Figures
+
+// Maintain this list when figures are added. Example:
+// * <<fig-example,Figure 1 - Figure Name>>
+
+* _[Add figure cross-references.]_
+
+=== List of Tables
+
+// Maintain this list when tables are added.
+
+* <<tbl-example,Table 1 - Table Name>>
+
+[appendix]
+== Revision History
+
+[cols="1,2"]
+|===
+|Document Title
+|{doctitle} {document-category}
+
+|Document Reference No.
+|{document-reference}
+
+|Clearance No.
+|{clearance-number}
+
+|Product Page
+|{product-page-url}[{product-page-url}]
+
+|Document Feedback
+|mailto:{feedback-email}[Send Feedback]
+|===
+
+[cols="1,3,1",options="header"]
+|===
+|Revision
+|Changes
+|Date
+
+|{revnumber}
+|{revremark}
+|{revdate}
+|===
+
+ifdef::include-internal-revision-history[]
+<<<
+
+[discrete]
+== Internal Revision History
+
+Revision history for internal use only. Clearly state all changes here before saving the file.
+
+[cols="1,1,3,2",options="header"]
+|===
+|Revision
+|Date
+|Changes
+|Author/Reviewer/Editor
+
+|Draft 0.1
+|DD-MM-YYYY
+|Initial draft. Add a concise description of every material change.
+|Name and role
+|===
+endif::include-internal-revision-history[]

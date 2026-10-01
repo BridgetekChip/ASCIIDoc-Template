@@ -1,0 +1,101 @@
+# Asciidoctor PDF theme for BRT_AN_Template_Ver.2.0.adoc.
+# Render from this directory so images/ paths resolve correctly.
+# The companion render_bridgetek_pdf.py adds the repeating page furniture.
+extends: default-sans
+
+page:
+  size: A4
+  layout: portrait
+  margin: [0.95in, 0.85in, 0.85in, 0.85in]
+  background-color: '#FFFFFF'
+
+title-page: false
+
+base:
+  font-family: Noto Sans
+  font-size: 9.5
+  font-color: '#1B1B1B'
+  line-height: 1.28
+
+role:
+  cover-code:
+    font-color: '#990000'
+    font-size: 15
+    font-style: bold
+    text-align: center
+  cover-title:
+    font-color: '#990000'
+    font-size: 27
+    font-style: bold
+    text-align: center
+  cover-category:
+    font-color: '#990000'
+    font-size: 16
+    font-style: bold
+    text-align: center
+  cover-safety:
+    font-size: 8.5
+    text-align: center
+  cover-contact:
+    font-size: 9
+    text-align: center
+  legal-notice:
+    font-size: 8
+
+heading:
+  font-family: Noto Sans
+  font-color: '#0077C8'
+  font-style: bold
+  line-height: 1.14
+  margin-top: 15
+  margin-bottom: 8
+  h2-font-size: 15
+  h3-font-size: 12
+  h4-font-size: 10.5
+
+link:
+  font-color: '#0077C8'
+
+table:
+  border-color: '#0077C8'
+  border-width: 0.65
+  grid-color: '#0077C8'
+  grid-width: 0.5
+  font-size: 8.5
+  cell:
+    padding: 4
+  head:
+    background-color: '#0077C8'
+    font-color: '#FFFFFF'
+    font-style: bold
+  caption:
+    align: center
+    end: bottom
+    font-color: '#1B1B1B'
+    font-style: bold
+
+caption:
+  font-size: 8.5
+  font-style: bold
+
+admonition:
+  background-color: '#FCE4D6'
+  border-color: '#F5C9AF'
+  border-width: 0.6
+  padding: [9, 10, 9, 10]
+  label:
+    font-color: '#1B1B1B'
+    font-style: bold
+
+toc:
+  title:
+    font-color: '#1B1B1B'
+    font-size: 14
+    font-style: bold
+
+header:
+  height: 0
+
+footer:
+  height: 0
+
